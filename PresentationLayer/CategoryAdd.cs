@@ -19,24 +19,24 @@ namespace PresentationLayer
     public partial class CategoryAdd : SampleAdd
     {
         private CategoryBL categoryBL;
-        public string id = "0";
-        public CategoryAdd(string id)
+        
+        public CategoryAdd()
         {
             InitializeComponent();
             categoryBL = new CategoryBL();
-            this.id = id;
+            
         }
 
         public CategoryAdd(SampleAdd parent)
         {
             InitializeComponent();
         }
-        
+        public int id = 0;
 
 
         public override void btnSave_Click(object sender, EventArgs e)
         {
-            if (id == "0")// insert
+            if (id == 0)// insert
             {
                 string name;
                 name = txtNameadd.Text;
@@ -46,7 +46,7 @@ namespace PresentationLayer
                     int numberOfRows = categoryBL.Add(category);
                     if (numberOfRows > 0)
                     {
-                        id = "0";
+                        id = 0;
                         txtNameadd.Text = "";
                         txtNameadd.Focus();
                         this.DialogResult = DialogResult.OK;
@@ -63,7 +63,7 @@ namespace PresentationLayer
                 string name;
                 name = txtNameadd.Text;
                 categoryBL.Edit(id, name);
-                id = "0";
+                id = 0;
                 txtNameadd.Text = "";
                 txtNameadd.Focus();
                 this.DialogResult = DialogResult.OK;

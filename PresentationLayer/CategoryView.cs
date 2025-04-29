@@ -35,10 +35,10 @@ namespace PresentationLayer
                 {
                     guna2DataGridView2.DataSource = categoryBL.GetCategories();
                 }
-                guna2DataGridView2.Columns["Id"].DataPropertyName = "Id";
+                //guna2DataGridView2.Columns["Id"].DataPropertyName = "Id";
                 guna2DataGridView2.Columns["Id"].Visible = false;
-                guna2DataGridView2.Columns["Name"].DataPropertyName = "Name";
-                guna2DataGridView2.Columns["Name"].Width = 800;
+                //guna2DataGridView2.Columns["Name"].DataPropertyName = "Name";
+                
 
             }
             catch (SqlException ex)
@@ -60,12 +60,13 @@ namespace PresentationLayer
             //deleteCol.Image = Properties.Resources.delete_icon; // <-- icon xóa, cần thêm hình vào Resources
             deleteCol.Width = 20;
             guna2DataGridView2.Columns.Add(deleteCol);
+            guna2DataGridView2.Columns["Name"].Width = 800;
 
         }
         public override void btnAdd_Click(object sender, EventArgs e)
         {
-            string id = "0";
-            CategoryAdd form = new CategoryAdd(id);
+            
+            CategoryAdd form = new CategoryAdd();
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -115,10 +116,11 @@ namespace PresentationLayer
         {
             // Lấy giá trị tên hiện tại từ dòng đang chọn
             string currentName = guna2DataGridView2.CurrentRow.Cells["Name"].Value.ToString();
-            string idCategory = guna2DataGridView2.CurrentRow.Cells["Id"].Value.ToString();
+            int idCategory = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["Id"].Value);
 
             // Mở form sửa
-            CategoryAdd frm = new CategoryAdd(idCategory);
+            CategoryAdd frm = new CategoryAdd();
+            frm.id = idCategory;
             frm.txtNameadd.Text = currentName;
             DialogResult result = frm.ShowDialog();
             if (result == DialogResult.OK)

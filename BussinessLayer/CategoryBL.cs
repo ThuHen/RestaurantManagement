@@ -50,7 +50,7 @@ namespace BussinessLayer
                 throw ex;
             }
         }
-        public void Edit(string id, string name)
+        public void Edit(int id, string name)
         {
             try
             {

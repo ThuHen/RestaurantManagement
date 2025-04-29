@@ -69,7 +69,7 @@ namespace DataLayer
             }
         }
 
-        public void Edit(string id, string name)
+        public void Edit(int id, string name)
         {
             string sql = "UPDATE category SET CatName = @name WHERE CatId = @id";
             List<SqlParameter> parameters = new List<SqlParameter>();
