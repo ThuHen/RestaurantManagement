@@ -23,7 +23,7 @@ namespace PresentationLayer
             categoryBL = new CategoryBL();
         }
 
-        private void LoadData()
+        private void GetData()
         {
             try
             {
@@ -49,14 +49,18 @@ namespace PresentationLayer
         }
         private void CategoryView_Load(object sender, EventArgs e)
         {
-            LoadData();
+            GetData();
             // Cột Edit
             DataGridViewImageColumn editCol = new DataGridViewImageColumn();
+            editCol.Name = "editcol";
+            editCol.HeaderText = "";
             //editCol.Image = Properties.Resources.edit_icon; // <-- icon sửa, cần thêm hình vào Resources
             editCol.Width = 20;
             guna2DataGridView2.Columns.Add(editCol);
             // Cột Delete
             DataGridViewImageColumn deleteCol = new DataGridViewImageColumn();
+            deleteCol.Name = "deletecol";
+            deleteCol.HeaderText = "";
             //deleteCol.Image = Properties.Resources.delete_icon; // <-- icon xóa, cần thêm hình vào Resources
             deleteCol.Width = 20;
             guna2DataGridView2.Columns.Add(deleteCol);
@@ -70,19 +74,19 @@ namespace PresentationLayer
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                LoadData();
+                GetData();
             }
         }
 
-        // Edit là cột 0, Delete là cột 1
-        int editColumnIndex = 0;
-        int deleteColumnIndex = 1;
+        
         private void dataGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int col = e.ColumnIndex;
             int row = e.RowIndex;
             //MessageBox.Show("col: " + col + " row: " + row);
             // Đảm bảo chỉ xử lý khi click vào dòng hợp lệ
+            int editColumnIndex = guna2DataGridView2.Columns["editcol"].Index;
+            int deleteColumnIndex = guna2DataGridView2.Columns["deletecol"].Index;
             if (row < 0) return;
             string id = guna2DataGridView2.Rows[row].Cells["id"].Value.ToString();
 
@@ -100,16 +104,35 @@ namespace PresentationLayer
         }
         private void Delete(string id)
         {
-            //need to confirm before delete
+            // Need to confirm before delete
             guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
             guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
             if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
             {
-                categoryBL.Del(id);
-                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
-                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-                MessageBox.Show("Delete successfully");
-                LoadData();
+                try
+                {
+                    // Attempt to delete the category
+                    categoryBL.Del(id);
+                    guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+                    guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                    MessageBox.Show("Delete successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetData();
+                }
+                catch (SqlException sqlEx)
+                {
+                    // Kiểm tra mã lỗi để xác định xem có phải là lỗi ràng buộc khóa ngoại (foreign key constraint)
+                    if (sqlEx.Number == 547) // Mã lỗi SQL 547 là lỗi ràng buộc khóa ngoại
+                    {
+                        // Hiển thị thông báo lỗi nếu gặp phải lỗi ràng buộc khóa ngoại
+                        MessageBox.Show("Danh mục này đang ràng buộc với các sản phẩm. Không thể xóa được.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Nếu là lỗi khác, hiển thị thông báo lỗi chung
+                        MessageBox.Show("Đã có lỗi xảy ra khi xóa danh mục: " + sqlEx.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
         }
         private void Edit(string id)
@@ -128,12 +151,12 @@ namespace PresentationLayer
                 guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
                 guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
                 MessageBox.Show("Update successfully");
-                LoadData();
+                GetData();
             }
         }
         public override void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            LoadData();
+            GetData();
         }
 
     }

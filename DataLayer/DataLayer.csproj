@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TableDL.cs" />
     <Compile Include="ProductDL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="LoginDL.cs" />

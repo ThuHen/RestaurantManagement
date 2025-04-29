@@ -63,11 +63,11 @@ namespace PresentationLayer
             AddControls(new CategoryView());
         }
 
-        //private void btnTable_Click(object sender, EventArgs e)
-        //{
-        //    AddControls(new TableView());
+        private void btnTable_Click(object sender, EventArgs e)
+        {
+            AddControls(new TableView());
 
-        //}
+        }
 
         //private void btnStaff_Click(object sender, EventArgs e)
         //{
