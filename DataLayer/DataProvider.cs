@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace DataLayer
 {
@@ -54,9 +55,10 @@ namespace DataLayer
             try
             {
                 Connect();
+                
                 cmd = new SqlCommand(sql, conn);
                 cmd.CommandType = type;
-
+                
                 return (cmd.ExecuteScalar());
             }
             catch (SqlException ex)
@@ -70,9 +72,16 @@ namespace DataLayer
         }
 
         // 
-        public SqlDataReader MyExecuteReader(string sql, CommandType type)
+        public SqlDataReader MyExecuteReader(string sql, CommandType type, List<SqlParameter> parameters = null)
         {
             SqlCommand cmd = new SqlCommand(sql, conn);
+            if (parameters != null)
+            {
+                foreach (SqlParameter p in parameters)
+                {
+                    cmd.Parameters.Add(p);
+                }
+            }
             try
             {
                 return cmd.ExecuteReader();

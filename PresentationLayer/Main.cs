@@ -88,11 +88,11 @@ namespace PresentationLayer
         //}
 
 
-        //private void btnProducts_Click(object sender, EventArgs e)
-        //{
-        //    AddControls(new ProductView());
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            AddControls(new ProductView());
 
-        //}
+        }
 
         //private void guna2PictureBox1_Click(object sender, EventArgs e)
         //{

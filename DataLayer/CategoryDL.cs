@@ -12,6 +12,7 @@ namespace DataLayer
 {
     public class CategoryDL:DataProvider
     {
+      
         public List<Category> GetCategories()
         {
             string sql = "SELECT * FROM category";
@@ -84,6 +85,7 @@ namespace DataLayer
                 throw ex; // Giữ nguyên stack trace gốc
             }
         }
+        
 
 
     }
