@@ -69,11 +69,11 @@ namespace PresentationLayer
 
         }
 
-        //private void btnStaff_Click(object sender, EventArgs e)
-        //{
-        //    AddControls(new StaffView());
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            AddControls(new StaffView());
 
-        //}
+        }
 
 
 

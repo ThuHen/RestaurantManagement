@@ -180,6 +180,7 @@
             this.btnStaff.Text = "Staff";
             this.btnStaff.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnStaff.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // btnCategories
             // 

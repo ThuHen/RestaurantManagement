@@ -9,18 +9,18 @@ using System.Data.SqlClient;
 
 namespace BussinessLayer
 {
-    public class CategoryBL
+    public class StaffCatBL
     {
-        private CategoryDL categoryDL;
-        public CategoryBL()
+        private StaffCatDL staffCatDL;
+        public StaffCatBL()
         {
-            this.categoryDL = new CategoryDL();
+            staffCatDL = new StaffCatDL();
         }
-        public List<Category> GetCategories()
+        public List<Category> GetStaffCats()
         {
             try
             {
-                return categoryDL.GetCategories();
+                return staffCatDL.GetStaffCats();
             }
             catch (SqlException ex)
             {
@@ -32,7 +32,7 @@ namespace BussinessLayer
         {
             try
             {
-                return categoryDL.Add(category);
+                return staffCatDL.Add(category);
             }
             catch (SqlException ex)
             {
@@ -43,7 +43,7 @@ namespace BussinessLayer
         {
             try
             {
-                categoryDL.Del(id);
+                staffCatDL.Del(id);
             }
             catch (SqlException ex)
             {
@@ -54,7 +54,7 @@ namespace BussinessLayer
         {
             try
             {
-                categoryDL.Edit(id, name);
+                staffCatDL.Edit(id, name);
             }
             catch (SqlException ex)
             {

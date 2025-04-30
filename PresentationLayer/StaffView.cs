@@ -10,21 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinessLayer;
-using System.IO;
-
+using TransferObject;
 
 namespace PresentationLayer
 {
-    public partial class ProductView: SampleView
+    public partial class StaffView: SampleView
     {
-        private ProductBL productBL;
-        public ProductView()
+        private StaffBL staffBL;
+        public StaffView()
         {
             InitializeComponent();
-            productBL = new ProductBL();
+            staffBL = new StaffBL();
         }
 
-        private void ProductView_Load(object sender, EventArgs e)
+        private void StaffView_Load(object sender, EventArgs e)
         {
             GetData();
             // Cột Edit
@@ -49,16 +48,16 @@ namespace PresentationLayer
             {
                 if (txtSearch.Text != "")
                 {
-                    guna2DataGridView2.DataSource = productBL.GetProducts().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                    guna2DataGridView2.DataSource = staffBL.GetStaffs().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                 }
                 else
                 {
-                    guna2DataGridView2.DataSource = productBL.GetProducts();
+                    guna2DataGridView2.DataSource = staffBL.GetStaffs();
                 }
-                guna2DataGridView2.Columns["Name"].HeaderText = "Product Name";
+                
                 guna2DataGridView2.Columns["Id"].Visible = false;
-                guna2DataGridView2.Columns["CategoryId"].Visible = false;
-                guna2DataGridView2.Columns["Image"].Visible = false;
+                guna2DataGridView2.Columns["RoleId"].Visible = false;
+        
             }
             catch (SqlException ex)
             {
@@ -68,7 +67,7 @@ namespace PresentationLayer
 
         public override void btnAdd_Click(object sender, EventArgs e)
         {
-            ProductAdd form = new ProductAdd();
+            StaffAdd form = new StaffAdd();
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -80,10 +79,9 @@ namespace PresentationLayer
         {
             GetData();
         }
-        
+
         private void guna2DataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
             int col = e.ColumnIndex;
             int row = e.RowIndex;
             //MessageBox.Show("col: " + col + " row: " + row);
@@ -107,6 +105,7 @@ namespace PresentationLayer
                 //MessageBox.Show("Delete");
             }
         }
+
         private void Delete(string id)
         {
             //need to confirm before delete
@@ -114,7 +113,7 @@ namespace PresentationLayer
             guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
             if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
             {
-                productBL.Del(id);
+                staffBL.Del(id);
                 guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
                 guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
                 MessageBox.Show("Delete successfully");
@@ -124,13 +123,14 @@ namespace PresentationLayer
         private void Edit(string id)
         {
             // Lấy giá trị tên hiện tại từ dòng đang chọn
-            int idCategory = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["CategoryId"].Value);
-            int idProduct = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["Id"].Value);
-
+            int idCatRole = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["RoleId"].Value);
+            int idStaff = Convert.ToInt32(id);
+            
+            //MessageBox.Show($"idStaff = {idStaff}, idCatRole = {idCatRole}");
             // Mở form sửa
-            ProductAdd frm = new ProductAdd();
-            frm.id = idProduct;
-            frm.catID = idCategory;
+            StaffAdd frm = new StaffAdd();
+            frm.id = idStaff;
+            frm.catID = idCatRole;
             DialogResult result = frm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -141,6 +141,5 @@ namespace PresentationLayer
             }
         }
 
-      
     }
 }

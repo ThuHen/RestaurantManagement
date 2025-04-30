@@ -10,12 +10,12 @@ using System.Data;
 
 namespace DataLayer
 {
-    public class CategoryDL:DataProvider
+    public class StaffCatDL:DataProvider
     {
       
-        public List<Category> GetCategories()
+        public List<Category> GetStaffCats()
         {
-            string sql = "SELECT * FROM category";
+            string sql = "SELECT * FROM stafftype";
             string id, name;
             List<Category> categories = new List<Category>();
             try
@@ -26,11 +26,11 @@ namespace DataLayer
                 {
                     id = reader[0].ToString();
                     name = reader[1].ToString();
-                    Category category = new Category(int.Parse(id), name);
+                    Category category = new Category(int.Parse(id),name);
                     categories.Add(category);
                 }
                 reader.Close();
-                return categories;
+                
             }
             catch (SqlException ex)
             {
@@ -40,10 +40,11 @@ namespace DataLayer
             {
                 Disconnect();
             }
+            return categories;
         }
         public int Add(Category category)
         {
-            string sql = "INSERT INTO category(CatName) VALUES('" + category.Name +  "')";
+            string sql = "INSERT INTO stafftype(typeName) VALUES('" + category.Name +  "')";
             try
             {
                 return MyExcuteNonQuery(sql, CommandType.Text);
@@ -56,7 +57,7 @@ namespace DataLayer
         }
         public void Del(string id)
         {
-            string sql = "DELETE FROM category WHERE CatId = @id";
+            string sql = "DELETE FROM stafftype WHERE typeId = @id";
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@id", id));
             try
@@ -71,7 +72,7 @@ namespace DataLayer
 
         public void Edit(int id, string name)
         {
-            string sql = "UPDATE category SET CatName = @name WHERE CatId = @id";
+            string sql = "UPDATE staff SET typeName = @name WHERE typeId = @id";
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@name", name));
             parameters.Add(new SqlParameter("@id", id));

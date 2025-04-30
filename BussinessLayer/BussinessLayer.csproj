@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StaffBL.cs" />
+    <Compile Include="StaffCatBL.cs" />
     <Compile Include="TableBL.cs" />
     <Compile Include="ProductBL.cs" />
     <Compile Include="LoginBL.cs" />

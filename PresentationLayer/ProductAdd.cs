@@ -17,9 +17,6 @@ namespace PresentationLayer
 {
     public partial class ProductAdd : SampleAdd
     {
-        
-
-
         private ProductBL productBL;
         
         public ProductAdd()
@@ -44,7 +41,7 @@ namespace PresentationLayer
 
             if (catID > 0)
             {
-                cbCat.SelectedValue = catID.ToString();
+                cbCat.SelectedValue = catID;
             }
             if (id > 0)
             {
@@ -99,10 +96,14 @@ namespace PresentationLayer
             else//save
             {
                 string name, price, categoryId;
-
-                categoryId = cbCat.SelectedValue.ToString();
                 name = txtNameadd.Text;
                 price = txtPrice.Text;
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price) || cbCat.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                    return;
+                }
+                categoryId = cbCat.SelectedValue.ToString();
 
                 Product product = new Product(name, double.Parse(price), int.Parse(categoryId), imageByteArray);
                 try
