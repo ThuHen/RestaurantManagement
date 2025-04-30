@@ -14,14 +14,17 @@ using TransferObject;
 
 namespace PresentationLayer
 {
-    public partial class StaffView: SampleView
+    public partial class StaffView : SampleView
     {
         private StaffBL staffBL;
+        private StaffCatBL staffCatBL;
         public StaffView()
         {
             InitializeComponent();
             staffBL = new StaffBL();
+            staffCatBL = new StaffCatBL();
         }
+        int flag = 0;
 
         private void StaffView_Load(object sender, EventArgs e)
         {
@@ -44,34 +47,70 @@ namespace PresentationLayer
 
         public void GetData()
         {
-            try
+            if (flag == 0)
             {
-                if (txtSearch.Text != "")
+                try
                 {
-                    guna2DataGridView2.DataSource = staffBL.GetStaffs().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                    if (txtSearch.Text != "")
+                    {
+                        guna2DataGridView2.DataSource = staffBL.GetStaffs().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                    }
+                    else
+                    {
+                        guna2DataGridView2.DataSource = staffBL.GetStaffs();
+                    }
+
+                    guna2DataGridView2.Columns["Id"].Visible = false;
+                    guna2DataGridView2.Columns["RoleId"].Visible = false;
+
                 }
-                else
+                catch (SqlException ex)
                 {
-                    guna2DataGridView2.DataSource = staffBL.GetStaffs();
+                    MessageBox.Show(ex.Message);
                 }
-                
-                guna2DataGridView2.Columns["Id"].Visible = false;
-                guna2DataGridView2.Columns["RoleId"].Visible = false;
-        
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    if (txtSearch.Text != "")
+                    {
+                        guna2DataGridView2.DataSource = staffCatBL.GetStaffCats().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                    }
+                    else
+                    {
+                        guna2DataGridView2.DataSource = staffCatBL.GetStaffCats();
+                    }
+
+                    guna2DataGridView2.Columns["Id"].Visible = false;
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
         public override void btnAdd_Click(object sender, EventArgs e)
         {
-            StaffAdd form = new StaffAdd();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
+            if (flag == 0)
             {
-                GetData();
+                StaffAdd form = new StaffAdd();
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    GetData();
+                }
+            }
+            else
+            {
+                StaffCatAdd form = new StaffCatAdd();
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    GetData();
+                }
             }
         }
 
@@ -113,7 +152,14 @@ namespace PresentationLayer
             guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
             if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
             {
-                staffBL.Del(id);
+                if (flag == 0)
+                {
+                    staffBL.Del(id);
+                }
+                else
+                {
+                    staffCatBL.Del(id);
+                }
                 guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
                 guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
                 MessageBox.Show("Delete successfully");
@@ -122,16 +168,25 @@ namespace PresentationLayer
         }
         private void Edit(string id)
         {
-            // Lấy giá trị tên hiện tại từ dòng đang chọn
-            int idCatRole = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["RoleId"].Value);
-            int idStaff = Convert.ToInt32(id);
-            
-            //MessageBox.Show($"idStaff = {idStaff}, idCatRole = {idCatRole}");
-            // Mở form sửa
-            StaffAdd frm = new StaffAdd();
-            frm.id = idStaff;
-            frm.catID = idCatRole;
-            DialogResult result = frm.ShowDialog();
+            DialogResult result;
+            if (flag == 0)
+            {               
+                int idCatRole = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["RoleId"].Value);
+                int idStaff = Convert.ToInt32(id);
+                StaffAdd frm = new StaffAdd();
+                frm.id = idStaff;
+                frm.catID = idCatRole;
+                result = frm.ShowDialog();
+            }
+            else
+            {
+                string currentName = guna2DataGridView2.CurrentRow.Cells["Name"].Value.ToString();
+                int idCategory = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["Id"].Value);
+                StaffCatAdd frm = new StaffCatAdd();
+                frm.id = idCategory;
+                frm.txtNameadd.Text = currentName;
+                result = frm.ShowDialog();
+            }
             if (result == DialogResult.OK)
             {
                 guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
@@ -141,5 +196,16 @@ namespace PresentationLayer
             }
         }
 
+        private void btnStaffCat_Click(object sender, EventArgs e)
+        {
+            flag = 1;
+            GetData();
+        }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            flag = 0;
+            GetData();
+        }
     }
 }

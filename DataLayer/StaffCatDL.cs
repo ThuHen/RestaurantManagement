@@ -72,7 +72,7 @@ namespace DataLayer
 
         public void Edit(int id, string name)
         {
-            string sql = "UPDATE staff SET typeName = @name WHERE typeId = @id";
+            string sql = "UPDATE stafftype SET typeName = @name WHERE typeId = @id";
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@name", name));
             parameters.Add(new SqlParameter("@id", id));

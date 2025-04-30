@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StaffCatAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffCatAdd.Designer.cs">
+      <DependentUpon>StaffCatAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="TableView.Designer.cs">
       <DependentUpon>TableView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StaffCatAdd.resx">
+      <DependentUpon>StaffCatAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CategoryAdd.resx">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
     </EmbeddedResource>

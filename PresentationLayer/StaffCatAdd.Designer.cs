@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class CategoryAdd
+    partial class StaffCatAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +37,8 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(189, 32);
-            this.label1.Text = "Category Details";
+            this.label1.Size = new System.Drawing.Size(244, 32);
+            this.label1.Text = "Staff Category Details";
             // 
             // btnClose
             // 
@@ -99,14 +99,14 @@
             this.txtNameadd.Size = new System.Drawing.Size(393, 36);
             this.txtNameadd.TabIndex = 0;
             // 
-            // CategoryAdd
+            // StaffCatAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 500);
             this.Controls.Add(this.txtNameadd);
             this.Controls.Add(this.label2);
-            this.Name = "CategoryAdd";
+            this.Name = "StaffCatAdd";
             this.Text = "ADD";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
