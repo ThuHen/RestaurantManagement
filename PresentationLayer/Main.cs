@@ -93,6 +93,12 @@ namespace PresentationLayer
 
         }
 
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            Pos pos = new Pos();
+            pos.Show();
+        }
+
         //private void guna2PictureBox1_Click(object sender, EventArgs e)
         //{
 
