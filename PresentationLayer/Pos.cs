@@ -247,11 +247,18 @@ namespace PresentationLayer
                 Details = GetOrderDetailsFromGrid()
             };
 
-            int newMainId = OrderBL.SaveOrder(order, MainId);
-            if (newMainId > 0)
+            if(order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
             {
-                guna2MessageDialog1.Show("Saved Successfully");
-                ClearForm();
+                MessageBox.Show("Can not kot!! Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newMainId = OrderBL.SaveOrder(order, MainId);
+                if (newMainId > 0)
+                {
+                    guna2MessageDialog1.Show("Saved Successfully");
+                    ClearForm();
+                }
             }
         }
 
@@ -272,5 +279,10 @@ namespace PresentationLayer
             return details;
         }
 
+        private void guna2Button_Click(object sender, EventArgs e)
+        {
+            ProductPanel.Controls.Clear();
+            LoadProducts();
+        }
     }
 }
