@@ -71,6 +71,13 @@ namespace BussinessLayer
                 throw ex;
             }
         }
+
+        public List<Staff> GetStaffByRole(String role)
+        {
+            List<Staff> staffList = this.GetStaffs();
+            List<Staff> rs = staffList.Where(staff => staff.RoleName == role).ToList();
+            return rs;
+        }
     }
     
     

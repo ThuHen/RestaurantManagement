@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pos.Designer.cs">
+      <DependentUpon>Pos.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffCatAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,12 +129,33 @@
     <Compile Include="TableAdd.Designer.cs">
       <DependentUpon>TableAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableSelect.Designer.cs">
+      <DependentUpon>TableSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TableView.Designer.cs">
       <DependentUpon>TableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UcProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcProduct.Designer.cs">
+      <DependentUpon>UcProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaiterSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaiterSelect.Designer.cs">
+      <DependentUpon>WaiterSelect.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pos.resx">
+      <DependentUpon>Pos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffCatAdd.resx">
       <DependentUpon>StaffCatAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,8 +202,17 @@
     <EmbeddedResource Include="TableAdd.resx">
       <DependentUpon>TableAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TableSelect.resx">
+      <DependentUpon>TableSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TableView.resx">
       <DependentUpon>TableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcProduct.resx">
+      <DependentUpon>UcProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaiterSelect.resx">
+      <DependentUpon>WaiterSelect.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -51,10 +51,11 @@
             this.btnAdd.HoverState.ImageSize = new System.Drawing.Size(57, 57);
             this.btnAdd.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
             this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(55, 55);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // label2
             // 
-            this.label2.Size = new System.Drawing.Size(133, 32);
+            this.label2.Size = new System.Drawing.Size(107, 25);
             this.label2.Text = "Product list";
             // 
             // guna2Separator1
@@ -128,7 +129,7 @@
             // 
             // ProductView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.guna2DataGridView2);

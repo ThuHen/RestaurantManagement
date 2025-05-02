@@ -93,9 +93,43 @@ namespace PresentationLayer
 
         }
 
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            Pos pos = new Pos();
+            pos.Show();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private void guna2PictureBox1_Click(object sender, EventArgs e)
         //{
 
         //}
+
+        public static void BlurBackGround(Form mainForm, Form Model)
+        {
+            Form Background = new Form();
+            try
+            {
+                Background.StartPosition = FormStartPosition.Manual;
+                Background.FormBorderStyle = FormBorderStyle.None;
+                Background.Opacity = 0.5d;
+                Background.BackColor = Color.Black;
+                Background.Size = mainForm.Size;
+                Background.Location = mainForm.Location;
+                Background.ShowInTaskbar = false;
+                Background.Show();
+                Model.Owner = Background;
+                Model.ShowDialog(Background); // Sử dụng ShowDialog để Background vẫn hiển thị
+            }
+            finally
+            {
+                Background.Dispose(); // Đảm bảo giải phóng tài nguyên của Background
+            }
+        }
+
     }
 }
