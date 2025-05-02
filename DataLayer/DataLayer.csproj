@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderDL.cs" />
     <Compile Include="StaffDL.cs" />
     <Compile Include="StaffCatDL.cs" />
     <Compile Include="TableDL.cs" />

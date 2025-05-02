@@ -67,7 +67,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(714, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 23);
+            this.label1.Size = new System.Drawing.Size(49, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Search";
             // 
@@ -93,7 +93,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(44, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 32);
+            this.label2.Size = new System.Drawing.Size(111, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Header Text";
             // 
@@ -130,6 +130,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SampleView";
             this.Text = "SanpleView";
+            this.Load += new System.EventHandler(this.SampleView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

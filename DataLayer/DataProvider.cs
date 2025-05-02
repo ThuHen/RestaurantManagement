@@ -50,16 +50,23 @@ namespace DataLayer
             }
         }
         /// cmd.ExcuteScalar
-        public object MyExecuteScalar(string sql, CommandType type)
+        public object MyExecuteScalar(string sql, CommandType type, List<SqlParameter> parameters = null)
         {
             try
             {
                 Connect();
-                
                 cmd = new SqlCommand(sql, conn);
                 cmd.CommandType = type;
-                
-                return (cmd.ExecuteScalar());
+
+                if (parameters != null)
+                {
+                    foreach (SqlParameter param in parameters)
+                    {
+                        cmd.Parameters.Add(param);
+                    }
+                }
+
+                return cmd.ExecuteScalar();
             }
             catch (SqlException ex)
             {
@@ -70,6 +77,7 @@ namespace DataLayer
                 Disconnect();
             }
         }
+
 
         // 
         public SqlDataReader MyExecuteReader(string sql, CommandType type, List<SqlParameter> parameters = null)

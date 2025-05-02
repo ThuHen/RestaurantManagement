@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using TransferObject;
 using BussinessLayer;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.VisualStyles;
+using System.Collections;
 
 namespace PresentationLayer
 {
@@ -18,12 +21,16 @@ namespace PresentationLayer
     {
         CategoryBL catBL;
         ProductBL productBL;
+
         public Pos()
         {
             InitializeComponent();
             catBL = new CategoryBL();
             productBL = new ProductBL();
         }
+
+        public int MainId = 0;
+        public string OrderType;
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -33,7 +40,6 @@ namespace PresentationLayer
         private void Pos_Load(object sender, EventArgs e)
         {
             guna2DataGridView1.BorderStyle = BorderStyle.FixedSingle;
-
             AddCategory();
             ProductPanel.Controls.Clear();
             LoadProducts();
@@ -48,7 +54,6 @@ namespace PresentationLayer
                 b.FillColor = Color.FromArgb(50, 55, 89);
                 b.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
                 b.Text = c.Name;
-
                 b.Click += new EventHandler(b_Click);
                 CategoryPanel.Controls.Add(b);
             }
@@ -59,22 +64,22 @@ namespace PresentationLayer
             Guna.UI2.WinForms.Guna2Button b = (Guna.UI2.WinForms.Guna2Button)sender;
             foreach (var item in ProductPanel.Controls)
             {
-
                 var pro = (UcProduct)item;
                 pro.Visible = pro.category.ToLower().Contains(b.Text.Trim().ToLower());
             }
         }
 
-        private void AddItems(int id, string name, string cat, string p, Image i)
+        private void AddItems(string id, String proID, string name, string cat, string p, Image i)
         {
             var w = new UcProduct()
             {
-                id = id, // Corrected: Use the property of the anonymous object
+                id = Convert.ToInt32(proID),
                 name = name,
                 price = p,
                 category = cat,
                 image = i
             };
+
             ProductPanel.Controls.Add((w));
             w.onSelect += (ss, ee) =>
             {
@@ -82,17 +87,17 @@ namespace PresentationLayer
 
                 foreach (DataGridViewRow item in guna2DataGridView1.Rows)
                 {
-                    if (Convert.ToInt32(item.Cells["dgvId"].Value) == wdg.id)
+                    if (Convert.ToInt32(item.Cells["dgvproID"].Value) == wdg.id)
                     {
                         item.Cells["dgvQty"].Value = int.Parse(item.Cells["dgvQty"].Value.ToString()) + 1;
                         item.Cells["dgvAmount"].Value = int.Parse(item.Cells["dgvQty"].Value.ToString()) *
                                                         double.Parse(item.Cells["dgvPrice"].Value.ToString());
-                        GetTotal(); // Recalculate total when quantity is updated
+                        GetTotal();
                         return;
                     }
                 }
-                //this line add new product
-                guna2DataGridView1.Rows.Add(new object[] { 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
+
+                guna2DataGridView1.Rows.Add(new object[] {0, 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
                 GetTotal();
             };
         }
@@ -104,8 +109,8 @@ namespace PresentationLayer
             {
                 Byte[] imageArray = (byte[])p.Image;
                 byte[] imageByteArray = imageArray;
-                AddItems(p.Id, p.Name, p.CategoryName.ToString(),
-                         p.Price.ToString(), Image.FromStream(new MemoryStream(imageArray)));
+                AddItems("0",p.Id.ToString(), p.Name, p.CategoryName.ToString(),
+                    p.Price.ToString(), Image.FromStream(new MemoryStream(imageArray)));
             }
         }
 
@@ -141,13 +146,131 @@ namespace PresentationLayer
 
         private void guna2DataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            // Ensure that the edited cell is either the quantity or the amount column
             if (e.ColumnIndex == guna2DataGridView1.Columns["dgvQty"].Index ||
                 e.ColumnIndex == guna2DataGridView1.Columns["dgvAmount"].Index)
             {
-                // Recalculate the total
                 GetTotal();
             }
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            guna2DataGridView1.Rows.Clear();
+            MainId = 0;
+            lblTotal.Text = "0.00";
+        }
+
+        private void ClearForm()
+        {
+            MainId = 0;
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            lblTotal.Text = "0.00";
+            guna2DataGridView1.Rows.Clear();
+        }
+
+        private void btnHold_Click(object sender, EventArgs e)
+        {
+            // Placeholder for hold logic
+        }
+
+        private void btnDelivery_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            OrderType = "Delivery";
+        }
+
+        private void btnTakeAway_Click(object sender, EventArgs e)
+        {
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            OrderType = "Take Away";
+        }
+
+        private void btnDinIn_Click(object sender, EventArgs e)
+        {
+            OrderType = "Din In";
+            TableSelect ts = new TableSelect();
+            Main.BlurBackGround(Main.Instance(null), ts); // Lấy instance của Main và truyền vào
+
+            if (ts.TableName != "")
+            {
+                lblTable.Text = ts.TableName;
+                lblTable.Visible=true;
+            }
+            else
+            {
+                lblTable.Text = "";
+                lblTable.Visible=false;
+            }
+
+            WaiterSelect ws = new WaiterSelect();
+            Main.BlurBackGround(Main.Instance(null), ws); // Lấy instance của Main và truyền vào
+
+            if (ws.WaiterName != "")
+            {
+                lblWaiter.Text = ws.WaiterName;
+                lblWaiter.Visible=true;
+            }
+            else
+            {
+                lblWaiter.Text = "";
+                lblWaiter.Visible = false;
+
+            }
+        }
+
+        private void btnKOT_Click(object sender, EventArgs e)
+        {
+            Order order = new Order
+            {
+                Date = DateTime.Now.Date,
+                Time = DateTime.Now.ToShortTimeString(),
+                TableName = lblTable.Text,
+                WaiterName = lblWaiter.Text,
+                Status = "Pending",
+                OrderType = OrderType,
+                Total = 0,
+                Received = 0,
+                Change = 0,
+                Details = GetOrderDetailsFromGrid()
+            };
+
+            int newMainId = OrderBL.SaveOrder(order, MainId);
+            if (newMainId > 0)
+            {
+                guna2MessageDialog1.Show("Saved Successfully");
+                ClearForm();
+            }
+        }
+
+        private List<OrderDetail> GetOrderDetailsFromGrid()
+        {
+            var details = new List<OrderDetail>();
+            foreach (DataGridViewRow row in guna2DataGridView1.Rows)
+            {
+                details.Add(new OrderDetail
+                {
+                    DetailID = Convert.ToInt32(row.Cells["dgvId"].Value),
+                    ProID = Convert.ToInt32(row.Cells["dgvproID"].Value),
+                    Qty = Convert.ToInt32(row.Cells["dgvQty"].Value),
+                    Price = Convert.ToDouble(row.Cells["dgvPrice"].Value),
+                    Amount = Convert.ToDouble(row.Cells["dgvAmount"].Value)
+                });
+            }
+            return details;
+        }
+
     }
 }

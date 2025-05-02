@@ -123,6 +123,9 @@
   <metadata name="dgvId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="dgvproID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="dgvName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -139,7 +142,7 @@
   <data name="txtSearch.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAuf
-        9AALn/QBcRILXQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADLISURBVHhe7d15
+        8gALn/IB8RFPxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADLISURBVHhe7d15
         mFXVme9x+t70fz3cnvt2p9NPd+cmnZx9UEOiJsaEqOGcA4gigsEBZ0WUmEajiaBiHEmi0WAiRs1AxAED
         Z5+amCnmQQaZR5mKAgoKiiqqKKhx3WdticF3HaCGM621v7/n+TxP4qk6VWudzVpv7b322j16hDj9i8/7
         176p6DfiqcjN8ZT3eNyP/Cbue0Vx31sc970tcd+rjvteTdz36uO+pwAAVtBjth679Riux3I9phclfO/X
@@ -359,4 +362,7 @@
         dh+M+d6meMpbeGpsfy0Y65PejYlU5BI9B8h5IUz5/+q1l6F673FDAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="guna2MessageDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
