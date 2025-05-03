@@ -41,7 +41,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(138, 32);
+            this.label1.Size = new System.Drawing.Size(160, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Staff details";
             // 
@@ -64,6 +64,7 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // panel1
             // 
@@ -99,15 +100,17 @@
             this.txtNameadd.SelectedText = "";
             this.txtNameadd.Size = new System.Drawing.Size(323, 36);
             this.txtNameadd.TabIndex = 0;
+            this.txtNameadd.TextChanged += new System.EventHandler(this.txtNameadd_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 187);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(64, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "Name";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtPhone
             // 
@@ -134,7 +137,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(442, 187);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 23);
+            this.label3.Size = new System.Drawing.Size(67, 28);
             this.label3.TabIndex = 6;
             this.label3.Text = "Phone";
             // 
@@ -143,7 +146,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(24, 311);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 23);
+            this.label4.Size = new System.Drawing.Size(50, 28);
             this.label4.TabIndex = 7;
             this.label4.Text = "Role";
             // 
@@ -164,7 +167,7 @@
             // 
             // StaffAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 571);
             this.Controls.Add(this.cbRole);

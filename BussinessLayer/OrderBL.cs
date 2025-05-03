@@ -24,7 +24,7 @@ namespace BussinessLayer
         }
 
 
-        public List<Order> GetOrders()
+        public List<Order> GetOrdersForBill()
         {
             try
             {
@@ -35,6 +35,17 @@ namespace BussinessLayer
                 throw ex;
             }
         }
+
+        public List<Order> GetKitchenOrders()
+        {
+            return orderDL.GetKitchenOrders();
+        }
+
+        public bool UpdatePayment(int mainId, decimal total, decimal received, decimal change)
+        {
+            return orderDL.UpdatePayment(mainId, total, received, change);
+        }
+
 
         public static int SaveOrder(Order order, int existingMainId)
         {

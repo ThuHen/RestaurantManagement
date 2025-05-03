@@ -265,6 +265,7 @@ namespace PresentationLayer
         private List<OrderDetail> GetOrderDetailsFromGrid()
         {
             var details = new List<OrderDetail>();
+            guna2DataGridView1.Rows.Clear();
             foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {
                 details.Add(new OrderDetail
@@ -287,7 +288,15 @@ namespace PresentationLayer
 
         private void btnBillList_Click(object sender, EventArgs e)  
         {
+            BillList frm = new BillList();
             Main.BlurBackGround(new Pos(), new BillList());
+            
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            Checkout frm = new Checkout();
+            
         }
     }
 }

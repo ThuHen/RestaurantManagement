@@ -22,6 +22,17 @@
 
         public Order() { }
 
+        // Ví dụ nếu bạn có constructor này trong class Order:
+        public Order(int mainID,string tableName, string waiterName, DateTime date, string orderType)
+        {
+            MainID = mainID;
+            TableName = tableName;
+            WaiterName = waiterName;
+            Date = date;
+            OrderType = orderType;
+        }
+
+
         public Order(int mainID, string tableName, string waiterName, string orderType, string status, double total)
         {
             MainID = mainID;

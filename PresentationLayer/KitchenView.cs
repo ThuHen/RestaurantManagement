@@ -1,4 +1,5 @@
 ﻿using BussinessLayer;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace PresentationLayer
 
         private void LoadOrders()
         {
-            List<Order> orders = orderBL.GetOrders();
+            List<Order> orders = orderBL.GetKitchenOrders(); // Gọi hàm rút gọn cho kitchen
             flowLayoutPanel1.Controls.Clear();
             FlowLayoutPanel p1;
 
@@ -122,19 +123,32 @@ namespace PresentationLayer
 
         private void b_Click(object sender, EventArgs e)
         {
-            Guna.UI2.WinForms.Guna2Button btn = sender as Guna.UI2.WinForms.Guna2Button;
+            var btn = sender as Guna.UI2.WinForms.Guna2Button;
 
             if (btn != null && btn.Tag != null)
             {
-                int mainId = int.Parse(btn.Tag.ToString());
+                int mainId = Convert.ToInt32(btn.Tag.ToString());
 
-                // Gọi Business Layer để cập nhật trạng thái
-                orderBL.MarkOrderAsComplete(mainId);
+                // Hộp thoại xác nhận
+                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
 
-                // Reload lại danh sách order
-                LoadOrders();
+                var result = guna2MessageDialog1.Show("Are you sure you want to complete this order?");
+                if (result == DialogResult.Yes)
+                {
+                    // Gọi hàm BL đã có sẵn
+                    orderBL.MarkOrderAsComplete(mainId);
+
+                    // Hộp thoại thông báo thành công
+                    guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                    guna2MessageDialog1.Show("Saved Successfully");
+
+                    // Reload lại danh sách
+                    LoadOrders();
+                }
             }
         }
+
 
     }
 }

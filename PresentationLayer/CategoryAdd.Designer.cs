@@ -37,7 +37,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(189, 32);
+            this.label1.Size = new System.Drawing.Size(220, 38);
             this.label1.Text = "Category Details";
             // 
             // btnClose
@@ -57,6 +57,7 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // panel1
             // 
@@ -75,7 +76,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 242);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 23);
+            this.label2.Size = new System.Drawing.Size(64, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
@@ -101,7 +102,7 @@
             // 
             // CategoryAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 500);
             this.Controls.Add(this.txtNameadd);

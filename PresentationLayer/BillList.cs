@@ -28,14 +28,20 @@ namespace PresentationLayer
         private void BillList_Load(object sender, EventArgs e)
         {
             GetData();
-           
+            // Cột Edit
+            DataGridViewImageColumn editCol = new DataGridViewImageColumn();
+            editCol.Name = "editcol";
+            editCol.HeaderText = "";
+            //editCol.Image = Properties.Resources.edit_icon; // <-- icon sửa, cần thêm hình vào Resources
+            editCol.Width = 20;
+            dgvOrders.Columns.Add(editCol);
         }
 
         private void GetData()
         {
             try
             {
-                List<Order> orders = orderBL.GetOrders(); // Gọi từ Business Layer
+                List<Order> orders = orderBL.GetOrdersForBill(); // Gọi từ Business Layer
                 dgvOrders.DataSource = orders;
 
                 // Tuỳ chỉnh hiển thị cột
