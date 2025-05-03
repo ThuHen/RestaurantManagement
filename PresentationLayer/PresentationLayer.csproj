@@ -55,6 +55,12 @@
     <Compile Include="BillList.Designer.cs">
       <DependentUpon>BillList.cs</DependentUpon>
     </Compile>
+    <Compile Include="KitchenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitchenView.Designer.cs">
+      <DependentUpon>KitchenView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </Compile>
     <EmbeddedResource Include="BillList.resx">
       <DependentUpon>BillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitchenView.resx">
+      <DependentUpon>KitchenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pos.resx">
       <DependentUpon>Pos.cs</DependentUpon>

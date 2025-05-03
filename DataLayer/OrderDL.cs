@@ -115,7 +115,9 @@ namespace DataLayer
        
            public List<Order> GetOrders()
         {
-            string sql = "SELECT MainID, TableName, WaiterName, OrderType, Status, Total FROM tblMain WHERE Status <> 'Pending'";
+            string sql = "SELECT * FROM tblMain WHERE Status <> 'Pending'";
+            string mainID, date, time, tableName, waiterName, status, orderType, total, received, change;
+            
             List<Order> orders = new List<Order>();
 
             try
@@ -125,14 +127,18 @@ namespace DataLayer
 
                 while (reader.Read())
                 {
-                    int mainID = Convert.ToInt32(reader["MainID"]);
-                    string tableName = reader["TableName"]?.ToString();
-                    string waiterName = reader["WaiterName"]?.ToString();
-                    string orderType = reader["OrderType"]?.ToString();
-                    string status = reader["Status"]?.ToString();
-                    double total = reader["Total"] != DBNull.Value ? Convert.ToDouble(reader["Total"]) : 0.0;
+                    mainID = reader[0].ToString();
+                    date = reader[1].ToString();
+                    time = reader[2].ToString();
+                    tableName = reader[3].ToString();
+                    waiterName = reader[4].ToString();
+                    status = reader[5].ToString();
+                    orderType = reader[6].ToString();
+                    total = reader[7].ToString();
+                    received = reader[8].ToString();
+                    change = reader[9].ToString();
 
-                    Order order = new Order(mainID, tableName, waiterName, orderType, status, total);
+                    Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total),Double.Parse( received),Double.Parse( change));
                     orders.Add(order);
                 }
                 reader.Close();

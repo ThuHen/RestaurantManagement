@@ -28,13 +28,6 @@ namespace PresentationLayer
         private void BillList_Load(object sender, EventArgs e)
         {
             GetData();
-            DataGridViewImageColumn editCol = new DataGridViewImageColumn();
-            editCol.Name = "editcol";
-            editCol.HeaderText = "";
-            //editCol.Image = Properties.Resources.edit_icon; // <-- icon sửa, cần thêm hình vào Resources
-            editCol.Width = 20;
-            dgvOrders.Columns.Add(editCol);
-            // Cột Delete
            
         }
 

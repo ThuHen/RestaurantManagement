@@ -31,5 +31,21 @@
             Status = status;
             Total = total;
         }
+        public Order( int mainID, DateTime date, string time, string tableName, string waiterName, string status,string orderType, double total,double received, double change )
+        {
+            MainID = mainID;
+            Date = date;
+            Time = time;
+            TableName = tableName;
+            WaiterName = waiterName;
+            Status = status;
+            OrderType = orderType;
+            Total = total;
+            Received = received;
+            Change = change;
+        }
+
+
+
     }
-    }
+}
