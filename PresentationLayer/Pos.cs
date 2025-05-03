@@ -284,5 +284,10 @@ namespace PresentationLayer
             ProductPanel.Controls.Clear();
             LoadProducts();
         }
+
+        private void btnBillList_Click(object sender, EventArgs e)  
+        {
+            Main.BlurBackGround(new Pos(), new BillList());
+        }
     }
 }

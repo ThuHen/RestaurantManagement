@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList.Designer.cs">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     <Compile Include="WaiterSelect.Designer.cs">
       <DependentUpon>WaiterSelect.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillList.resx">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pos.resx">
       <DependentUpon>Pos.cs</DependentUpon>
     </EmbeddedResource>

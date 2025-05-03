@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransferObject;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace DataLayer
 {
@@ -108,5 +111,46 @@ namespace DataLayer
 
             MyExcuteNonQuery(query, CommandType.Text, parameters);
         }
+
+       
+           public List<Order> GetOrders()
+        {
+            string sql = "SELECT MainID, TableName, WaiterName, OrderType, Status, Total FROM tblMain WHERE Status <> 'Pending'";
+            List<Order> orders = new List<Order>();
+
+            try
+            {
+                Connect(); // Hàm kết nối CSDL của bạn
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
+
+                while (reader.Read())
+                {
+                    int mainID = Convert.ToInt32(reader["MainID"]);
+                    string tableName = reader["TableName"]?.ToString();
+                    string waiterName = reader["WaiterName"]?.ToString();
+                    string orderType = reader["OrderType"]?.ToString();
+                    string status = reader["Status"]?.ToString();
+                    double total = reader["Total"] != DBNull.Value ? Convert.ToDouble(reader["Total"]) : 0.0;
+
+                    Order order = new Order(mainID, tableName, waiterName, orderType, status, total);
+                    orders.Add(order);
+                }
+                reader.Close();
+                return orders;
+            }
+            catch (SqlException ex)
+            {
+                throw ex; // Có thể log hoặc xử lý chi tiết hơn
+            }
+            finally
+            {
+                Disconnect(); // Đóng kết nối
+            }
+        }
+
     }
+
+
+
+
 }

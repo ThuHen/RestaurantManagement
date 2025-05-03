@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -86,7 +86,7 @@ namespace PresentationLayer
             
             int col = e.ColumnIndex;
             int row = e.RowIndex;
-            //MessageBox.Show("col: " + col + " row: " + row);
+            //MessageBox.Show("col: " + col + " row: " + row);  
             // Đảm bảo chỉ xử lý khi click vào dòng hợp lệ
             if (row < 0) return;
             string id = guna2DataGridView2.Rows[row].Cells["id"].Value.ToString();
