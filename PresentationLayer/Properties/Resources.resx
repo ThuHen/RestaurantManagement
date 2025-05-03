@@ -118,7 +118,79 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icons8-table-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-table-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-chef-hat-100-pink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-chef-hat-100-pink.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-group-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-group-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-name-tag-1001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-name-tag-1001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-power-off-button-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-power-off-button-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-cutlery-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-cutlery-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-hand-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-hand-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-agreement-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-agreement-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-take-away-food-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-take-away-food-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-search-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-search-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-add-new-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-add-new-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-pos-terminal-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-pos-terminal-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-waiter-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-waiter-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-bill-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-bill-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-restaurant-table-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-restaurant-table-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-delivery-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-delivery-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-setting-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-setting-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-new-ticket-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-new-ticket-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-name-tag-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-name-tag-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-product-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-product-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-product-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-product-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-dog-house-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-dog-house-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-medium-priority-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-medium-priority-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-chef-hat-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-chef-hat-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -37,7 +37,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(220, 38);
+            this.label1.Size = new System.Drawing.Size(189, 32);
             this.label1.Text = "Category Details";
             // 
             // btnClose
@@ -69,14 +69,16 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_medium_priority_100;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 242);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 28);
+            this.label2.Size = new System.Drawing.Size(56, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
@@ -102,7 +104,7 @@
             // 
             // CategoryAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 500);
             this.Controls.Add(this.txtNameadd);

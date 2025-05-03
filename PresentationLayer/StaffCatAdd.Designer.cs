@@ -37,8 +37,8 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(244, 32);
-            this.label1.Text = "Staff Category Details";
+            this.label1.Size = new System.Drawing.Size(199, 32);
+            this.label1.Text = "Staff Type Details";
             // 
             // btnClose
             // 
@@ -68,7 +68,10 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_name_tag_100;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.Location = new System.Drawing.Point(28, 37);
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // label2
             // 
