@@ -120,6 +120,7 @@ namespace DataLayer
             
             List<Order> orders = new List<Order>();
 
+
             try
             {
                 Connect(); // Hàm kết nối CSDL của bạn
@@ -139,6 +140,7 @@ namespace DataLayer
                     change = reader[9].ToString();
 
                     Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total),Double.Parse( received),Double.Parse( change));
+                    order.Details = GetOrderDetails(order.MainID);
                     orders.Add(order);
                 }
                 reader.Close();
@@ -153,6 +155,69 @@ namespace DataLayer
                 Disconnect(); // Đóng kết nối
             }
         }
+
+
+        public List<OrderDetail> GetOrderDetails(int mainId)
+        {
+            string sql = @"SELECT d.DetailID, d.ProID, p.ProName, d.qty, d.price, d.amount 
+                     FROM tblDetails d 
+                     JOIN tblProduct p ON d.ProID = p.ProID 
+                     WHERE d.MainID = @MainID";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@MainID", mainId)
+    };
+
+            List<OrderDetail> details = new List<OrderDetail>();
+
+            try
+            {
+                Connect();
+
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text, parameters);
+
+                while (reader.Read())
+                {
+                    OrderDetail detail = new OrderDetail
+                    {
+                        DetailID = Convert.ToInt32(reader["DetailID"]),
+                        ProID = Convert.ToInt32(reader["ProID"]),
+                        ProName = reader["ProName"].ToString(),
+                        Qty = Convert.ToInt32(reader["qty"]),
+                        Price = Convert.ToDouble(reader["price"]),
+                        Amount = Convert.ToDouble(reader["amount"])
+                    };
+
+                    details.Add(detail);
+                }
+                reader.Close();
+                return details;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+        public void MarkOrderAsComplete(int mainId)
+        {
+            string sql = "UPDATE tblMain SET Status = 'Complete' WHERE MainID = @MainID";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@MainID", mainId)
+    };
+
+            MyExcuteNonQuery(sql, CommandType.Text, parameters);
+        }
+
+
 
     }
 

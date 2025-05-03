@@ -18,6 +18,12 @@ namespace BussinessLayer
             orderDL = new OrderDL();
         }
 
+        public void MarkOrderAsComplete(int mainId)
+        {
+            orderDL.MarkOrderAsComplete(mainId);
+        }
+
+
         public List<Order> GetOrders()
         {
             try

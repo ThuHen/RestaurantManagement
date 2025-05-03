@@ -8,6 +8,7 @@ namespace TransferObject
 {
     public class OrderDetail
     {
+        public string ProName { get; set; }
         public int DetailID { get; set; }
         public int ProID { get; set; }
         public int Qty { get; set; }
