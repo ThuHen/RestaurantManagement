@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace DataLayer
 {
-    public class OrderDL:DataProvider
+    public class OrderDL : DataProvider
     {
         public int InsertOrder(Order order)
         {
@@ -112,39 +112,41 @@ namespace DataLayer
             MyExcuteNonQuery(query, CommandType.Text, parameters);
         }
 
-       
-           public List<Order> GetOrders()
+
+        public List<Order> GetOrders()
         {
             string sql = "SELECT * FROM tblMain WHERE Status <> 'Pending'";
             string mainID, date, time, tableName, waiterName, status, orderType, total, received, change;
-            
+
             List<Order> orders = new List<Order>();
 
 
             try
             {
-                Connect(); // Hàm kết nối CSDL của bạn
-                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
-
-                while (reader.Read())
                 {
-                    mainID = reader[0].ToString();
-                    date = reader[1].ToString();
-                    time = reader[2].ToString();
-                    tableName = reader[3].ToString();
-                    waiterName = reader[4].ToString();
-                    status = reader[5].ToString();
-                    orderType = reader[6].ToString();
-                    total = reader[7].ToString();
-                    received = reader[8].ToString();
-                    change = reader[9].ToString();
+                    Connect(); // Hàm kết nối CSDL của bạn
+                    SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
 
-                    Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total),Double.Parse( received),Double.Parse( change));
-                    order.Details = GetOrderDetails(order.MainID);
-                    orders.Add(order);
+                    while (reader.Read())
+                    {
+                        mainID = reader[0].ToString();
+                        date = reader[1].ToString();
+                        time = reader[2].ToString();
+                        tableName = reader[3].ToString();
+                        waiterName = reader[4].ToString();
+                        status = reader[5].ToString();
+                        orderType = reader[6].ToString();
+                        total = reader[7].ToString();
+                        received = reader[8].ToString();
+                        change = reader[9].ToString();
+
+                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total), Double.Parse(received), Double.Parse(change));
+                        //order.Details = GetOrderDetails(order.MainID);
+                        orders.Add(order);
+                    }
+                    reader.Close();
+                    return orders;
                 }
-                reader.Close();
-                return orders;
             }
             catch (SqlException ex)
             {
@@ -157,7 +159,7 @@ namespace DataLayer
         }
         public List<Order> GetKitchenOrders()
         {
-            string sql = "SELECT MainID, aDate, TableName, WaiterName, OrderType FROM tblMain WHERE Status <>'Complete'";
+            string sql = "SELECT MainID, aDate, aTime, TableName, WaiterName, OrderType FROM tblMain WHERE Status <>'Complete'";
             List<Order> orders = new List<Order>();
 
             try
@@ -169,15 +171,16 @@ namespace DataLayer
                 {
                     int mainId = Convert.ToInt32(reader["MainID"]);
                     DateTime date = Convert.ToDateTime(reader["aDate"]);
+                    string time = reader["aTime"].ToString();
                     string tableName = reader["TableName"].ToString();
                     string waiterName = reader["WaiterName"].ToString();
                     string orderType = reader["OrderType"].ToString();
 
                     // Tạo đối tượng Order đầy đủ với MainID và các trường cần thiết
-                    Order order = new Order(mainId, tableName, waiterName,date, orderType);
-                    order.Details = GetOrderDetails(mainId); // nếu bạn vẫn muốn lấy chi tiết món
+                    Order order = new Order(mainId, date, time, tableName, waiterName, orderType);
+                    //order.Details = GetOrderDetails(mainId); // nếu bạn vẫn muốn lấy chi tiết món
                     orders.Add(order);
-  
+
                 }
 
                 reader.Close();
@@ -189,13 +192,11 @@ namespace DataLayer
             }
         }
 
-
-
         public List<OrderDetail> GetOrderDetails(int mainId)
         {
-            string sql = @"SELECT d.DetailID, d.ProID, p.ProName, d.qty, d.price, d.amount 
+            string sql = @"SELECT d.DetailID, d.ProID, p.pName, d.qty, d.price, d.amount 
                      FROM tblDetails d 
-                     JOIN tblProduct p ON d.ProID = p.ProID 
+                     JOIN products p ON d.ProID = p.pID 
                      WHERE d.MainID = @MainID";
 
             List<SqlParameter> parameters = new List<SqlParameter>
@@ -217,7 +218,7 @@ namespace DataLayer
                     {
                         DetailID = Convert.ToInt32(reader["DetailID"]),
                         ProID = Convert.ToInt32(reader["ProID"]),
-                        ProName = reader["ProName"].ToString(),
+                        ProName = reader["pName"].ToString(),
                         Qty = Convert.ToInt32(reader["qty"]),
                         Price = Convert.ToDouble(reader["price"]),
                         Amount = Convert.ToDouble(reader["amount"])
@@ -264,7 +265,7 @@ namespace DataLayer
             try
             {
                 Connect();
-               int row= MyExcuteNonQuery(sql, CommandType.Text, parameters);
+                int row = MyExcuteNonQuery(sql, CommandType.Text, parameters);
                 return row > 0;
             }
             catch (SqlException ex)

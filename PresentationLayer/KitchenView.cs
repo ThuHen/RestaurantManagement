@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TransferObject;
+using static TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath;
 
 namespace PresentationLayer
 {
@@ -32,6 +33,10 @@ namespace PresentationLayer
         private void LoadOrders()
         {
             List<Order> orders = orderBL.GetKitchenOrders(); // Gọi hàm rút gọn cho kitchen
+            foreach (var order in orders)
+            {
+                order.Details = orderBL.GetOrderDetails(order.MainID);
+            }
             flowLayoutPanel1.Controls.Clear();
             FlowLayoutPanel p1;
 

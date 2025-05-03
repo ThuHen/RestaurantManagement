@@ -55,7 +55,16 @@
             Received = received;
             Change = change;
         }
-
+        public Order(int mainID, DateTime date, string time, string tableName, string waiterName, string orderType)
+        {
+            MainID = mainID;
+            Date = date;
+            Time = time;
+            TableName = tableName;
+            WaiterName = waiterName;
+            OrderType = orderType;
+            
+        }
 
 
     }

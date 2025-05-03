@@ -265,7 +265,7 @@ namespace PresentationLayer
         private List<OrderDetail> GetOrderDetailsFromGrid()
         {
             var details = new List<OrderDetail>();
-            guna2DataGridView1.Rows.Clear();
+            //guna2DataGridView1.Rows.Clear();
             foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {
                 details.Add(new OrderDetail

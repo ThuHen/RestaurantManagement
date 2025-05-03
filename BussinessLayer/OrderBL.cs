@@ -40,6 +40,10 @@ namespace BussinessLayer
         {
             return orderDL.GetKitchenOrders();
         }
+        public List<OrderDetail>  GetOrderDetails(int mainId)
+        {
+            return orderDL.GetOrderDetails(mainId);
+        }
 
         public bool UpdatePayment(int mainId, decimal total, decimal received, decimal change)
         {
