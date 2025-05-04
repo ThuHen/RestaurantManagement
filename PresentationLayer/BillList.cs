@@ -23,7 +23,7 @@ namespace PresentationLayer
             orderBL = new OrderBL();
 
         }
-
+        public int mainID = 0;
 
         private void BillList_Load(object sender, EventArgs e)
         {
@@ -32,9 +32,10 @@ namespace PresentationLayer
             DataGridViewImageColumn editCol = new DataGridViewImageColumn();
             editCol.Name = "editcol";
             editCol.HeaderText = "";
-            //editCol.Image = Properties.Resources.edit_icon; // <-- icon sửa, cần thêm hình vào Resources
-            editCol.Width = 20;
+            editCol.Image = Properties.Resources.icons8_edit_100;
+            editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvOrders.Columns.Add(editCol);
+            editCol.Width = 20;
         }
 
         private void GetData()
@@ -94,19 +95,10 @@ namespace PresentationLayer
         private void Edit(string id)
         {
             // Lấy giá trị tên hiện tại từ dòng đang chọn
-            int mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
-
-            // Mở form sửa
-            BillList frm = new BillList();
-
-            DialogResult result = frm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
-                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-                MessageBox.Show("Update successfully");
-                GetData();
-            }
+            mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
+            //MessageBox.Show("Edit " + mainID);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

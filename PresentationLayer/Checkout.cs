@@ -15,7 +15,7 @@ using TransferObject;
 
 namespace PresentationLayer
 {
-    partial class Checkout: SampleAdd
+    partial class Checkout : SampleAdd
     {
         private OrderBL orderBL;
         public Checkout()
@@ -23,10 +23,12 @@ namespace PresentationLayer
             InitializeComponent();
             orderBL = new OrderBL();
         }
-
+        
+        public int mainId = 0;
+        public double amt;
         private void Checkout_Load(object sender, EventArgs e)
         {
-
+            txtBillAmount.Text = amt.ToString();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -34,45 +36,40 @@ namespace PresentationLayer
 
         }
 
-         private void txtChange_TextChanged(object sender, EventArgs e)
+        private void txtChange_TextChanged(object sender, EventArgs e)
         {
-            double amt = 0;
+
             double receipt = 0;
             double change = 0;
 
             double.TryParse(txtBillAmount.Text, out amt);
-            double.TryParse(txtPayment.Text, out amt);
+            double.TryParse(txtPayment.Text, out receipt);
 
-            change = amt - receipt;
+
+            change = receipt - amt;
             txtChange.Text = change.ToString();
+
+
+
         }
-        public int id = 0;
+
+
         public override void btnSave_Click(object sender, EventArgs e)
         {
             decimal total = (decimal)double.Parse(txtBillAmount.Text);
             decimal received = (decimal)double.Parse(txtPayment.Text);
             decimal change = (decimal)double.Parse(txtChange.Text);
 
-            if (id == 0) // Thêm mới
+
+            if (orderBL.UpdatePayment(mainId, total, received, change))
             {
-                if (orderBL.UpdatePayment(id, total, received, change))
-                {
-                    guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-                    guna2MessageDialog1.Show("Thanh toán đã được cập nhật thành công!");
-                    this.Close();
-                }
+                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                guna2MessageDialog1.Show("Thanh toán đã được cập nhật thành công!");
+                this.Close();
             }
-              
+
+
         }
 
-
-
-    
-
-
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

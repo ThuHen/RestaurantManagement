@@ -83,6 +83,16 @@ namespace PresentationLayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_agreement_1001 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-agreement-1001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bill_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-bill-100", resourceCulture);
@@ -123,6 +133,16 @@ namespace PresentationLayer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delivery_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delivery-100", resourceCulture);
@@ -136,6 +156,16 @@ namespace PresentationLayer.Properties {
         internal static System.Drawing.Bitmap icons8_dog_house_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-dog-house-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -43,7 +43,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(146, 38);
+            this.label1.Size = new System.Drawing.Size(126, 32);
             this.label1.Text = "Check Out";
             // 
             // btnClose
@@ -63,7 +63,6 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // panel1
             // 
@@ -80,7 +79,9 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_agreement_1001;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // guna2ControlBox1
             // 
@@ -97,7 +98,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(57, 233);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 28);
+            this.label2.Size = new System.Drawing.Size(99, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Bill Amount";
             // 
@@ -116,6 +117,7 @@
             this.txtBillAmount.Name = "txtBillAmount";
             this.txtBillAmount.PasswordChar = '\0';
             this.txtBillAmount.PlaceholderText = "";
+            this.txtBillAmount.ReadOnly = true;
             this.txtBillAmount.SelectedText = "";
             this.txtBillAmount.Size = new System.Drawing.Size(272, 36);
             this.txtBillAmount.TabIndex = 3;
@@ -135,17 +137,17 @@
             this.txtChange.Name = "txtChange";
             this.txtChange.PasswordChar = '\0';
             this.txtChange.PlaceholderText = "";
+            this.txtChange.ReadOnly = true;
             this.txtChange.SelectedText = "";
             this.txtChange.Size = new System.Drawing.Size(272, 36);
             this.txtChange.TabIndex = 7;
-            this.txtChange.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(57, 367);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 28);
+            this.label4.Size = new System.Drawing.Size(69, 23);
             this.label4.TabIndex = 6;
             this.label4.Text = "Change";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -155,7 +157,7 @@
             this.lbpay.AutoSize = true;
             this.lbpay.Location = new System.Drawing.Point(469, 233);
             this.lbpay.Name = "lbpay";
-            this.lbpay.Size = new System.Drawing.Size(169, 28);
+            this.lbpay.Size = new System.Drawing.Size(148, 23);
             this.lbpay.TabIndex = 4;
             this.lbpay.Text = "Payment Received";
             // 
@@ -177,6 +179,7 @@
             this.txtPayment.SelectedText = "";
             this.txtPayment.Size = new System.Drawing.Size(272, 36);
             this.txtPayment.TabIndex = 5;
+            this.txtPayment.TextChanged += new System.EventHandler(this.txtChange_TextChanged);
             // 
             // guna2MessageDialog1
             // 
@@ -189,7 +192,7 @@
             // 
             // Checkout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 619);
             this.Controls.Add(this.txtChange);
