@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableSelect));
             this.panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picsample = new Guna.UI2.WinForms.Guna2PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnExit = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picsample)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.guna2ControlBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.picsample);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -51,6 +49,19 @@
             this.panel1.Size = new System.Drawing.Size(872, 145);
             this.panel1.TabIndex = 1;
             // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.CustomClick = true;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(765, 47);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(62, 32);
+            this.guna2ControlBox1.TabIndex = 5;
+            this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -59,14 +70,14 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(205, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 25);
+            this.label1.Size = new System.Drawing.Size(140, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select Table";
             // 
             // picsample
             // 
             this.picsample.BackColor = System.Drawing.Color.Transparent;
-            this.picsample.Image = ((System.Drawing.Image)(resources.GetObject("picsample.Image")));
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_table_100;
             this.picsample.ImageRotate = 0F;
             this.picsample.Location = new System.Drawing.Point(28, 23);
             this.picsample.Name = "picsample";
@@ -86,17 +97,6 @@
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.ImageRotate = 0F;
-            this.btnExit.Location = new System.Drawing.Point(751, 51);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(81, 71);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.TabStop = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // TableSelect
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -113,7 +113,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picsample)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -124,6 +123,6 @@
         public System.Windows.Forms.Label label1;
         public Guna.UI2.WinForms.Guna2PictureBox picsample;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2PictureBox btnExit;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

@@ -6,10 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransferObject;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace DataLayer
 {
-    public class OrderDL:DataProvider
+    public class OrderDL : DataProvider
     {
         public int InsertOrder(Order order)
         {
@@ -108,5 +111,178 @@ namespace DataLayer
 
             MyExcuteNonQuery(query, CommandType.Text, parameters);
         }
+
+
+        public List<Order> GetOrders()
+        {
+            string sql = "SELECT * FROM tblMain WHERE Status <> 'Pending'";
+            string mainID, date, time, tableName, waiterName, status, orderType, total, received, change;
+
+            List<Order> orders = new List<Order>();
+
+
+            try
+            {
+                {
+                    Connect(); // Hàm kết nối CSDL của bạn
+                    SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
+
+                    while (reader.Read())
+                    {
+                        mainID = reader[0].ToString();
+                        date = reader[1].ToString();
+                        time = reader[2].ToString();
+                        tableName = reader[3].ToString();
+                        waiterName = reader[4].ToString();
+                        status = reader[5].ToString();
+                        orderType = reader[6].ToString();
+                        total = reader[7].ToString();
+                        received = reader[8].ToString();
+                        change = reader[9].ToString();
+
+                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total), Double.Parse(received), Double.Parse(change));
+                        //order.Details = GetOrderDetails(order.MainID);
+                        orders.Add(order);
+                    }
+                    reader.Close();
+                    return orders;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex; // Có thể log hoặc xử lý chi tiết hơn
+            }
+            finally
+            {
+                Disconnect(); // Đóng kết nối
+            }
+        }
+        public List<Order> GetKitchenOrders()
+        {
+            string sql = "SELECT MainID, aDate, aTime, TableName, WaiterName, OrderType FROM tblMain WHERE Status <>'Complete'";
+            List<Order> orders = new List<Order>();
+
+            try
+            {
+                Connect();
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
+
+                while (reader.Read())
+                {
+                    int mainId = Convert.ToInt32(reader["MainID"]);
+                    DateTime date = Convert.ToDateTime(reader["aDate"]);
+                    string time = reader["aTime"].ToString();
+                    string tableName = reader["TableName"].ToString();
+                    string waiterName = reader["WaiterName"].ToString();
+                    string orderType = reader["OrderType"].ToString();
+
+                    // Tạo đối tượng Order đầy đủ với MainID và các trường cần thiết
+                    Order order = new Order(mainId, date, time, tableName, waiterName, orderType);
+                    //order.Details = GetOrderDetails(mainId); // nếu bạn vẫn muốn lấy chi tiết món
+                    orders.Add(order);
+
+                }
+
+                reader.Close();
+                return orders;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+        public List<OrderDetail> GetOrderDetails(int mainId)
+        {
+            string sql = @"SELECT d.DetailID, d.ProID, p.pName, d.qty, d.price, d.amount 
+                     FROM tblDetails d 
+                     JOIN products p ON d.ProID = p.pID 
+                     WHERE d.MainID = @MainID";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@MainID", mainId)
+    };
+
+            List<OrderDetail> details = new List<OrderDetail>();
+
+            try
+            {
+                Connect();
+
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text, parameters);
+
+                while (reader.Read())
+                {
+                    OrderDetail detail = new OrderDetail
+                    {
+                        DetailID = Convert.ToInt32(reader["DetailID"]),
+                        ProID = Convert.ToInt32(reader["ProID"]),
+                        ProName = reader["pName"].ToString(),
+                        Qty = Convert.ToInt32(reader["qty"]),
+                        Price = Convert.ToDouble(reader["price"]),
+                        Amount = Convert.ToDouble(reader["amount"])
+                    };
+
+                    details.Add(detail);
+                }
+                reader.Close();
+                return details;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+        public void MarkOrderAsComplete(int mainId)
+        {
+            string sql = "UPDATE tblMain SET Status = 'Complete' WHERE MainID = @MainID";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@MainID", mainId)
+    };
+
+            MyExcuteNonQuery(sql, CommandType.Text, parameters);
+        }
+
+        public bool UpdatePayment(int mainID, decimal total, decimal received, decimal change)
+        {
+            string sql = @"UPDATE tblMain SET total = @total, received = @rec, change = @change, status='Paid' WHERE MainID = @id";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@total", total),
+                new SqlParameter("@rec", received),
+                new SqlParameter("@change", change),
+                new SqlParameter("@id", mainID)
+            };
+            try
+            {
+                Connect();
+                int row = MyExcuteNonQuery(sql, CommandType.Text, parameters);
+                return row > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+
+
     }
+
+
+
+
 }

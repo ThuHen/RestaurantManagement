@@ -78,7 +78,9 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_product_100;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // cbCat
             // 
@@ -175,7 +177,7 @@
             // txtImage
             // 
             this.txtImage.FillColor = System.Drawing.Color.Black;
-            this.txtImage.Image = global::PresentationLayer.Properties.Resources.user;
+            this.txtImage.Image = global::PresentationLayer.Properties.Resources.icons8_product_256;
             this.txtImage.ImageRotate = 0F;
             this.txtImage.Location = new System.Drawing.Point(575, 200);
             this.txtImage.Name = "txtImage";

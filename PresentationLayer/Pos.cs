@@ -21,12 +21,14 @@ namespace PresentationLayer
     {
         CategoryBL catBL;
         ProductBL productBL;
+        OrderBL orderBL;
 
         public Pos()
         {
             InitializeComponent();
             catBL = new CategoryBL();
             productBL = new ProductBL();
+            orderBL = new OrderBL();
         }
 
         public int MainId = 0;
@@ -58,7 +60,25 @@ namespace PresentationLayer
                 CategoryPanel.Controls.Add(b);
             }
         }
-
+        private void LoadProducts()
+        {
+            List<Product> products = productBL.GetProducts();
+            foreach (Product p in products)
+            {
+                Byte[] imageArray = (byte[])p.Image;
+                byte[] imageByteArray = imageArray;
+                AddItems("0", p.Id.ToString(), p.Name, p.CategoryName.ToString(),
+                    p.Price.ToString(), Image.FromStream(new MemoryStream(imageArray)));
+            }
+        }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            foreach (var item in ProductPanel.Controls)
+            {
+                var pro = (UcProduct)item;
+                pro.Visible = pro.name.ToLower().Contains(txtSearch.Text.Trim().ToLower());
+            }
+        }
         private void b_Click(object sender, EventArgs e)
         {
             Guna.UI2.WinForms.Guna2Button b = (Guna.UI2.WinForms.Guna2Button)sender;
@@ -68,7 +88,6 @@ namespace PresentationLayer
                 pro.Visible = pro.category.ToLower().Contains(b.Text.Trim().ToLower());
             }
         }
-
         private void AddItems(string id, String proID, string name, string cat, string p, Image i)
         {
             var w = new UcProduct()
@@ -97,32 +116,10 @@ namespace PresentationLayer
                     }
                 }
 
-                guna2DataGridView1.Rows.Add(new object[] {0, 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
+                guna2DataGridView1.Rows.Add(new object[] { 0, 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
                 GetTotal();
             };
         }
-
-        private void LoadProducts()
-        {
-            List<Product> products = productBL.GetProducts();
-            foreach (Product p in products)
-            {
-                Byte[] imageArray = (byte[])p.Image;
-                byte[] imageByteArray = imageArray;
-                AddItems("0",p.Id.ToString(), p.Name, p.CategoryName.ToString(),
-                    p.Price.ToString(), Image.FromStream(new MemoryStream(imageArray)));
-            }
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            foreach (var item in ProductPanel.Controls)
-            {
-                var pro = (UcProduct)item;
-                pro.Visible = pro.name.ToLower().Contains(txtSearch.Text.Trim().ToLower());
-            }
-        }
-
         private void guna2DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             int count = 0;
@@ -132,7 +129,6 @@ namespace PresentationLayer
                 row.Cells[0].Value = count;
             }
         }
-
         private void GetTotal()
         {
             double total = 0;
@@ -143,7 +139,6 @@ namespace PresentationLayer
             }
             lblTotal.Text = total.ToString("N2");
         }
-
         private void guna2DataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == guna2DataGridView1.Columns["dgvQty"].Index ||
@@ -152,16 +147,9 @@ namespace PresentationLayer
                 GetTotal();
             }
         }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
-            lblTable.Text = "";
-            lblWaiter.Text = "";
-            lblTable.Visible = false;
-            lblWaiter.Visible = false;
-            guna2DataGridView1.Rows.Clear();
-            MainId = 0;
-            lblTotal.Text = "0.00";
+            ClearForm();
         }
 
         private void ClearForm()
@@ -207,12 +195,12 @@ namespace PresentationLayer
             if (ts.TableName != "")
             {
                 lblTable.Text = ts.TableName;
-                lblTable.Visible=true;
+                lblTable.Visible = true;
             }
             else
             {
                 lblTable.Text = "";
-                lblTable.Visible=false;
+                lblTable.Visible = false;
             }
 
             WaiterSelect ws = new WaiterSelect();
@@ -221,7 +209,7 @@ namespace PresentationLayer
             if (ws.WaiterName != "")
             {
                 lblWaiter.Text = ws.WaiterName;
-                lblWaiter.Visible=true;
+                lblWaiter.Visible = true;
             }
             else
             {
@@ -247,7 +235,7 @@ namespace PresentationLayer
                 Details = GetOrderDetailsFromGrid()
             };
 
-            if(order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
+            if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
             {
                 MessageBox.Show("Can not kot!! Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -265,6 +253,7 @@ namespace PresentationLayer
         private List<OrderDetail> GetOrderDetailsFromGrid()
         {
             var details = new List<OrderDetail>();
+            //guna2DataGridView1.Rows.Clear();
             foreach (DataGridViewRow row in guna2DataGridView1.Rows)
             {
                 details.Add(new OrderDetail
@@ -283,6 +272,61 @@ namespace PresentationLayer
         {
             ProductPanel.Controls.Clear();
             LoadProducts();
+        }
+        public int id = 0;
+        private void btnBillList_Click(object sender, EventArgs e)
+        {
+            BillList frm = new BillList();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                if (frm.mainID > 0)
+                {
+                    id = frm.mainID;
+                    LoadEntries();
+                }
+            }
+
+        }
+        private void LoadEntries()
+        {
+            guna2DataGridView1.Rows.Clear();
+            List<OrderDetail> ordetails = orderBL.GetOrderDetails(id);
+            foreach (OrderDetail detail in ordetails)
+
+            {
+                guna2DataGridView1.Rows.Add(new object[] { 0, 0, detail.ProID, detail.ProName, detail.Qty, detail.Price, detail.Amount });
+                //guna2DataGridView1.Rows.Add(new object[] { 0, 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
+            }
+            GetTotal();
+            //if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Delivery")
+            //{
+            //    btnDelivery.Checked = true;
+            //    lblWaiter.Visible = false;
+            //    lblTable.Visible = false;
+            //}
+            //else if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Take Away")
+            //{
+            //    btnTakeAway.Checked = true;
+            //    lblWaiter.Visible = false;
+            //    lblTable.Visible = false;
+            //}
+            //else if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Din In")
+            //{
+            //    btnDinIn.Checked = true;
+            //    lblWaiter.Visible = true;
+            //    lblTable.Visible = true;
+            //}
+
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            Checkout frm = new Checkout();
+            frm.mainId = id;
+            frm.amt = double.Parse(lblTotal.Text);
+            Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
+            ClearForm();
+
         }
     }
 }

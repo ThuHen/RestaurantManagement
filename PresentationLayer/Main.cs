@@ -131,5 +131,9 @@ namespace PresentationLayer
             }
         }
 
+        private void btnKitchen_Click(object sender, EventArgs e)
+        {
+            AddControls(new KitchenView());
+        }
     }
 }
