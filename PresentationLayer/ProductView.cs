@@ -28,7 +28,7 @@ namespace PresentationLayer
         {
             GetData();
             AddColumns();
-            guna2DataGridView2.Columns["Name"].Width = 800;
+            guna2DataGridView2.Columns["Name"].Width = 200;
             guna2DataGridView2.Columns["Price"].Width = 200;
             guna2DataGridView2.Columns["CategoryId"].Visible = false;
             guna2DataGridView2.Columns["Image"].Visible = false;

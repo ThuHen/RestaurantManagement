@@ -277,12 +277,67 @@ namespace DataLayer
                 Disconnect();
             }
         }
+        public string GetOrderType(int mainId)
+        {
+            string sql = "SELECT OrderType FROM tblMain WHERE MainID = @MainID";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@MainID", mainId)
+            };
+            try
+            {
+                Connect();
+                object result = MyExecuteScalar(sql, CommandType.Text, parameters);
+                return result?.ToString();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
 
-
-
+        public Order GetOrder(int mainID)
+        {
+            string sql = "SELECT * FROM tblMain WHERE MainID = @MainID";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@MainID", mainID)
+            };
+            try
+            {
+                Connect();
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text, parameters);
+                if (reader.Read())
+                {
+                    Order order = new Order
+                    {
+                        MainID = Convert.ToInt32(reader["MainID"]),
+                        Date = Convert.ToDateTime(reader["aDate"]),
+                        Time = reader["aTime"].ToString(),
+                        TableName = reader["TableName"].ToString(),
+                        WaiterName = reader["WaiterName"].ToString(),
+                        Status = reader["Status"].ToString(),
+                        OrderType = reader["OrderType"].ToString(),
+                        Total = Convert.ToDouble(reader["Total"]),
+                        Received = Convert.ToDouble(reader["Received"]),
+                        Change = Convert.ToDouble(reader["Change"])
+                    };
+                    return order;
+                }
+                return null;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
     }
-
-
-
-
 }

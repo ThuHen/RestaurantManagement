@@ -208,9 +208,10 @@ namespace PresentationLayer
 
             if (ws.WaiterName != "")
             {
-                lblWaiter.Text = ws.WaiterName;
+                lblWaiter.Text = "Waiter: " + ws.WaiterName;
                 lblWaiter.Visible = true;
             }
+            
             else
             {
                 lblWaiter.Text = "";
@@ -291,6 +292,8 @@ namespace PresentationLayer
         {
             guna2DataGridView1.Rows.Clear();
             List<OrderDetail> ordetails = orderBL.GetOrderDetails(id);
+            Order order = orderBL.GetOrder(id);
+            OrderType = orderBL.GetOrderType(id);
             foreach (OrderDetail detail in ordetails)
 
             {
@@ -298,24 +301,26 @@ namespace PresentationLayer
                 //guna2DataGridView1.Rows.Add(new object[] { 0, 0, wdg.id, wdg.name, 1, wdg.price, wdg.price });
             }
             GetTotal();
-            //if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Delivery")
-            //{
-            //    btnDelivery.Checked = true;
-            //    lblWaiter.Visible = false;
-            //    lblTable.Visible = false;
-            //}
-            //else if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Take Away")
-            //{
-            //    btnTakeAway.Checked = true;
-            //    lblWaiter.Visible = false;
-            //    lblTable.Visible = false;
-            //}
-            //else if (guna2DataGridView1.Rows[0].Cells["orderType"].ToString() == "Din In")
-            //{
-            //    btnDinIn.Checked = true;
-            //    lblWaiter.Visible = true;
-            //    lblTable.Visible = true;
-            //}
+            if (OrderType == "Delivery")
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else if (OrderType == "Take Away")
+            {
+                btnTakeAway.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else if (OrderType   == "Din In")
+            {
+                btnDinIn.Checked = true;
+                lblWaiter.Text = "Waiter: " + (order?.WaiterName ?? "Không có tên");
+                lblTable.Text = order.TableName;
+                lblWaiter.Visible = true;
+                lblTable.Visible = true;
+            }
 
         }
 

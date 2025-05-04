@@ -44,13 +44,18 @@ namespace BussinessLayer
         {
             return orderDL.GetOrderDetails(mainId);
         }
-
+        public string GetOrderType(int mainId)
+        {
+            return orderDL.GetOrderType(mainId);
+        }
+        public Order GetOrder(int mainId)
+        {
+            return orderDL.GetOrder(mainId);
+        }
         public bool UpdatePayment(int mainId, decimal total, decimal received, decimal change)
         {
             return orderDL.UpdatePayment(mainId, total, received, change);
         }
-
-
         public static int SaveOrder(Order order, int existingMainId)
         {
             OrderDL orderDL = new OrderDL();
@@ -65,7 +70,5 @@ namespace BussinessLayer
                 return existingMainId;
             }
         }
-
-
     }
 }

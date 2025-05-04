@@ -31,10 +31,6 @@ namespace PresentationLayer
             txtBillAmount.Text = amt.ToString();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtChange_TextChanged(object sender, EventArgs e)
         {
