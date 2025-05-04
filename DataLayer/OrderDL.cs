@@ -55,6 +55,9 @@ namespace DataLayer
                                 total = @total,
                                 received = @received, 
                                 change = @change 
+                                driverID = @driverID,                 
+                                CusName = @CusName,
+                                CusPhone = @CusPhone
                              WHERE MainID = @ID";
 
             List<SqlParameter> parameters = new List<SqlParameter>
@@ -63,6 +66,9 @@ namespace DataLayer
                 new SqlParameter("@total", order.Total),
                 new SqlParameter("@received", order.Received),
                 new SqlParameter("@change", order.Change),
+                new SqlParameter("@driverID", order.driverID),
+                new SqlParameter("@CusName", order.CusName),
+                new SqlParameter("@CusPhone", order.CusPhone),
                 new SqlParameter("@ID", mainId)
             };
 
@@ -119,7 +125,7 @@ namespace DataLayer
         public List<Order> GetOrders()
         {
             string sql = "SELECT * FROM tblMain WHERE Status <> 'Pending'";
-            string mainID, date, time, tableName, waiterName, status, orderType, total, received, change;
+            string mainID, date, time, tableName, waiterName, status, orderType, total, received, change, driverID, cusName, cusPhone;
 
             List<Order> orders = new List<Order>();
 
@@ -142,8 +148,11 @@ namespace DataLayer
                         total = reader[7].ToString();
                         received = reader[8].ToString();
                         change = reader[9].ToString();
+                        driverID = reader[10].ToString();
+                        cusName = reader[11].ToString();
+                        cusPhone = reader[12].ToString();
 
-                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total), Double.Parse(received), Double.Parse(change));
+                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total), Double.Parse(received), Double.Parse(change), int.Parse(driverID), cusName, cusPhone);
                         //order.Details = GetOrderDetails(order.MainID);
                         orders.Add(order);
                     }

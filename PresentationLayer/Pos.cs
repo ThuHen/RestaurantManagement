@@ -178,6 +178,22 @@ namespace PresentationLayer
 
         private void btnHold_Click(object sender, EventArgs e)
         {
+            if (driverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
+
             // Placeholder for hold logic
             Order order = new Order
             {
@@ -190,8 +206,13 @@ namespace PresentationLayer
                 Total = 0,
                 Received = 0,
                 Change = 0,
-                Details = GetOrderDetailsFromGrid()
+                Details = GetOrderDetailsFromGrid(),
+                driverID = driverID,
+                CusName = customName,
+                CusPhone= customPhone
             };
+
+
 
             if (order.OrderType=="")
             {
@@ -230,13 +251,13 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.txtName.Text != "")
+            if (frm.cusName != "")
             {
                 driverID = frm.driverID;
-                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text + " Driver: " + frm.cbDriver.Text;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
                 lbDriverName.Visible = true;
-                customName = frm.txtName.Text;
-                customPhone = frm.txtPhone.Text;
             }
         }
 
@@ -253,13 +274,14 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.txtName.Text!="")
+            if (frm.cusName!="")
             {
                 driverID = frm.driverID;
-                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text +" Driver: "+ frm.cbDriver.Text;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
                 lbDriverName.Visible = true;
-                customName = frm.txtName.Text;
-                customPhone = frm.txtPhone.Text;
+         
             }
             
         }
@@ -301,6 +323,22 @@ namespace PresentationLayer
 
         private void btnKOT_Click(object sender, EventArgs e)
         {
+            if (driverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
+
             Order order = new Order
             {
                 Date = DateTime.Now.Date,
@@ -312,7 +350,10 @@ namespace PresentationLayer
                 Total = 0,
                 Received = 0,
                 Change = 0,
-                Details = GetOrderDetailsFromGrid()
+                Details = GetOrderDetailsFromGrid(),
+                driverID = driverID,
+                CusName = customName,
+                CusPhone = customPhone
             };
 
             if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
