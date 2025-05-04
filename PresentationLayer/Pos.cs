@@ -263,6 +263,7 @@ namespace PresentationLayer
 
         private void btnTakeAway_Click(object sender, EventArgs e)
         {
+
             lblTable.Text = "";
             lblWaiter.Text = "";
             lblTable.Visible = false;

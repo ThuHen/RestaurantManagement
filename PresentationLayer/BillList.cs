@@ -76,6 +76,12 @@ namespace PresentationLayer
 
                 if (dgvOrders.Columns["change"] != null)
                     dgvOrders.Columns["change"].Visible = false;
+                if (dgvOrders.Columns["driverID"] != null)
+                    dgvOrders.Columns["driverID"].Visible = true;
+                if (dgvOrders.Columns["cusName"] != null)
+                    dgvOrders.Columns["cusName"].Visible = true;
+                if (dgvOrders.Columns["cusPhone"] != null)
+                    dgvOrders.Columns["cusPhone"].Visible = true;
 
                 if (dgvOrders.Columns["driverID"] != null)
                     dgvOrders.Columns["driverID"].Visible = true;

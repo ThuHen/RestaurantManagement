@@ -1,8 +1,8 @@
 ﻿    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+using System.Text;
+using System.Threading.Tasks;
 
     namespace TransferObject
     {
@@ -61,6 +61,7 @@
             Received = received;
             Change = change;
         }
+
         public Order(int mainID, DateTime date, string time, string tableName, string waiterName, string orderType)
         {
             MainID = mainID;
