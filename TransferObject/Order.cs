@@ -61,6 +61,7 @@ using System.Threading.Tasks;
             Received = received;
             Change = change;
         }
+
         public Order(int mainID, DateTime date, string time, string tableName, string waiterName, string orderType)
         {
             MainID = mainID;
@@ -70,6 +71,22 @@ using System.Threading.Tasks;
             WaiterName = waiterName;
             OrderType = orderType;
             
+        }
+        public Order(int mainID, DateTime date, string time, string tableName, string waiterName, string status, string orderType, double total, double received, double change, int driverId, string cusName, string cusPhone)
+        {
+            MainID = mainID;
+            Date = date;
+            Time = time;
+            TableName = tableName;
+            WaiterName = waiterName;
+            Status = status;
+            OrderType = orderType;
+            Total = total;
+            Received = received;
+            Change = change;
+            driverID = driverId;
+            CusName = cusName;
+            CusPhone = cusPhone;
         }
         
 

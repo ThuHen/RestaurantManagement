@@ -178,7 +178,24 @@ namespace PresentationLayer
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            // Placeholder for hold logic
+            if (driverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
+            
+
+
             Order order = new Order
             {
                 Date = DateTime.Now.Date,
@@ -234,18 +251,19 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.txtName.Text != "")
+            if (frm.cusName != "")
             {
                 driverID = frm.driverID;
-                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text + " Driver: " + frm.cbDriver.Text;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
                 lbDriverName.Visible = true;
-                customName = frm.txtName.Text;
-                customPhone = frm.txtPhone.Text;
             }
         }
 
         private void btnTakeAway_Click(object sender, EventArgs e)
         {
+
             lblTable.Text = "";
             lblWaiter.Text = "";
             lblTable.Visible = false;
@@ -257,13 +275,13 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.txtName.Text!="")
+            if (frm.cusName != "")
             {
                 driverID = frm.driverID;
-                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text ;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
                 lbDriverName.Visible = true;
-                customName = frm.txtName.Text;
-                customPhone = frm.txtPhone.Text;
             }
             
         }
@@ -305,6 +323,21 @@ namespace PresentationLayer
 
         private void btnKOT_Click(object sender, EventArgs e)
         {
+            if (driverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
             Order order = new Order
             {
                 Date = DateTime.Now.Date,

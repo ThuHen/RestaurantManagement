@@ -57,13 +57,19 @@ namespace PresentationLayer
                     dgvOrders.Columns["aDate"].Visible = false;
 
                 if (dgvOrders.Columns["aTime"] != null)
-                    dgvOrders.Columns["aTime"].Visible = false;
+                    dgvOrders.Columns["aTime"].Visible = true;
 
                 if (dgvOrders.Columns["received"] != null)
                     dgvOrders.Columns["received"].Visible = false;
 
                 if (dgvOrders.Columns["change"] != null)
                     dgvOrders.Columns["change"].Visible = false;
+                if (dgvOrders.Columns["driverID"] != null)
+                    dgvOrders.Columns["driverID"].Visible = true;
+                if (dgvOrders.Columns["cusName"] != null)
+                    dgvOrders.Columns["cusName"].Visible = true;
+                if (dgvOrders.Columns["cusPhone"] != null)
+                    dgvOrders.Columns["cusPhone"].Visible = true;
 
             }
             catch (Exception ex)
