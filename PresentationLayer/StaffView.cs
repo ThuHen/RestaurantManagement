@@ -29,24 +29,31 @@ namespace PresentationLayer
         private void StaffView_Load(object sender, EventArgs e)
         {
             GetData();
+            
+        }
+        public void AddColumns()
+        {
             // Cột Edit
             DataGridViewImageColumn editCol = new DataGridViewImageColumn();
             editCol.Name = "editcol";
             editCol.HeaderText = "";
-            //editCol.Image = Properties.Resources.edit_icon; // <-- icon sửa, cần thêm hình vào Resources
-            editCol.Width = 20;
+            editCol.Image = Properties.Resources.icons8_edit_100; // <-- icon sửa, cần thêm hình vào Resources
+            editCol.Width = 40;
+            editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             guna2DataGridView2.Columns.Add(editCol);
             // Cột Delete
             DataGridViewImageColumn deleteCol = new DataGridViewImageColumn();
             deleteCol.Name = "deletecol";
             deleteCol.HeaderText = "";
-            //deleteCol.Image = Properties.Resources.delete_icon; // <-- icon xóa, cần thêm hình vào Resources
-            deleteCol.Width = 20;
+            deleteCol.Image = Properties.Resources.icons8_delete_100; // <-- icon xóa, cần thêm hình vào Resources
+            deleteCol.Width = 40;
+            deleteCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             guna2DataGridView2.Columns.Add(deleteCol);
         }
-
         public void GetData()
         {
+            guna2DataGridView2.Columns.Clear();
+
             if (flag == 0)
             {
                 try
@@ -62,6 +69,7 @@ namespace PresentationLayer
 
                     guna2DataGridView2.Columns["Id"].Visible = false;
                     guna2DataGridView2.Columns["RoleId"].Visible = false;
+                    AddColumns();
 
                 }
                 catch (SqlException ex)
@@ -83,6 +91,8 @@ namespace PresentationLayer
                     }
 
                     guna2DataGridView2.Columns["Id"].Visible = false;
+                    guna2DataGridView2.Columns["Name"].Width = 800;
+                    AddColumns();
 
                 }
                 catch (SqlException ex)
