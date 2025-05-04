@@ -190,7 +190,11 @@ namespace PresentationLayer
                 Total = 0,
                 Received = 0,
                 Change = 0,
-                Details = GetOrderDetailsFromGrid()
+                Details = GetOrderDetailsFromGrid(),
+                driverID = driverID,
+                CusName = customName,
+                CusPhone = customPhone
+
             };
 
             if (order.OrderType=="")
@@ -256,7 +260,7 @@ namespace PresentationLayer
             if (frm.txtName.Text!="")
             {
                 driverID = frm.driverID;
-                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text +" Driver: "+ frm.cbDriver.Text;
+                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text ;
                 lbDriverName.Visible = true;
                 customName = frm.txtName.Text;
                 customPhone = frm.txtPhone.Text;
@@ -312,7 +316,10 @@ namespace PresentationLayer
                 Total = 0,
                 Received = 0,
                 Change = 0,
-                Details = GetOrderDetailsFromGrid()
+                Details = GetOrderDetailsFromGrid(),
+                driverID = driverID,
+                CusName = customName,
+                CusPhone = customPhone
             };
 
             if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))

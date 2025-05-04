@@ -18,7 +18,7 @@ namespace DataLayer
         {
             string query = @"INSERT INTO tblMain 
                             VALUES (@aDate, @aTime, @TableName, @WaiterName,
-                                    @status, @orderType, @total, @received, @change,@driverID,@CusName,@CusPhone);
+                                    @status, @orderType, @total, @received, @change, @driverID, @CusName, @CusPhone);
                             SELECT SCOPE_IDENTITY()";
 
             List<SqlParameter> parameters = new List<SqlParameter>

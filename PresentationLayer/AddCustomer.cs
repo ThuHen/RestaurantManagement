@@ -28,7 +28,7 @@ namespace PresentationLayer
 
         private void AddCustomer_Load(object sender, EventArgs e)
         {
-            if (orderType=="Take Away ")
+            if (orderType== "Take Away")
             {
                 lbDriver.Visible = false;
                 cbDriver.Visible = false;
