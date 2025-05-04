@@ -1,5 +1,6 @@
 ﻿using BussinessLayer;
 using Guna.UI2.WinForms;
+using PresentationLayer.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,17 @@ namespace PresentationLayer
             editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvOrders.Columns.Add(editCol);
             editCol.Width = 20;
+
+            // in bill
+
+            //DataGridViewImageColumn printCol = new DataGridViewImageColumn();
+            //printCol.Name = "printcol";
+            //printCol.HeaderText = "";
+            //// sửa hình
+            //printCol.Image = Properties.Resources.icons8_edit_100;
+            //printCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            //dgvOrders.Columns.Add(printCol);
+            //printCol.Width = 20;
         }
 
         private void GetData()
@@ -99,7 +111,27 @@ namespace PresentationLayer
                 //MessageBox.Show("Edit");
 
             }
-            
+
+            //int printColumnIndex = dgvOrders.Columns["printcol"].Index;
+            //if (col == printColumnIndex)
+            //{
+
+            //    Print frm = new Print();
+            //    BIll cr = new BIll();
+
+            //    mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
+            //    ///
+            //    List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID); // Gọi hàm rút gọn cho kitchen
+
+
+            //    frm.crystalReportViewer2.ReportSource = cr;
+            //    frm.crystalReportViewer2.Refresh();
+            //    frm.Show();
+
+            //}
+
+
+
         }
         
         private void Edit(string id)

@@ -350,6 +350,66 @@ namespace DataLayer
             {
                 Disconnect();
             }
+
+
         }
+
+    //    public List<FullBillDetail> GetFullBillDetails(int mainId)
+    //    {
+    //        string qry = @"
+    //    SELECT * FROM tblMain m
+    //    INNER JOIN tblDetails d ON d.MainID = m.MainID
+    //    INNER JOIN products p ON p.PID = d.ProID
+    //    WHERE m.MainID = @MainID";
+
+    //        List<SqlParameter> parameters = new List<SqlParameter>
+    //{
+    //    new SqlParameter("@MainID", mainId)
+    //};
+
+    //        List<FullBillDetail> details = new List<FullBillDetail>();
+
+    //        try
+    //        {
+    //            Connect();
+
+    //            SqlDataReader reader = MyExecuteReader(qry, CommandType.Text, parameters);
+
+    //            while (reader.Read())
+    //            {
+    //                FullBillDetail detail = new FullBillDetail
+    //                {
+    //                    // tblMain
+    //                    MainID = Convert.ToInt32(reader["MainID"]),
+    //                    Date = Convert.ToDateTime(reader["Date"]),
+    //                    CustomerName = reader["CustomerName"].ToString(),
+
+    //                    // tblDetails
+    //                    DetailID = Convert.ToInt32(reader["DetailID"]),
+    //                    ProID = Convert.ToInt32(reader["ProID"]),
+    //                    Qty = Convert.ToInt32(reader["qty"]),
+    //                    Price = Convert.ToDouble(reader["price"]),
+    //                    Amount = Convert.ToDouble(reader["amount"]),
+
+    //                    // products
+    //                    ProName = reader["pName"].ToString()
+    //                };
+
+    //                details.Add(detail);
+    //            }
+
+    //            reader.Close();
+    //            return details;
+    //        }
+    //        catch (SqlException ex)
+    //        {
+    //            throw ex;
+    //        }
+    //        finally
+    //        {
+    //            Disconnect();
+    //        }
+    //    }
+
     }
 }

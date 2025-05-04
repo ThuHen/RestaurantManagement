@@ -39,6 +39,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbnOk = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.picsample)).BeginInit();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -189,12 +190,28 @@
             this.txtPhone.Size = new System.Drawing.Size(323, 36);
             this.txtPhone.TabIndex = 3;
             // 
+            // tbnOk
+            // 
+            this.tbnOk.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.tbnOk.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.tbnOk.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.tbnOk.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.tbnOk.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbnOk.ForeColor = System.Drawing.Color.White;
+            this.tbnOk.Location = new System.Drawing.Point(431, 499);
+            this.tbnOk.Name = "tbnOk";
+            this.tbnOk.Size = new System.Drawing.Size(180, 45);
+            this.tbnOk.TabIndex = 2;
+            this.tbnOk.Text = "guna2Button1";
+            this.tbnOk.Click += new System.EventHandler(this.tbnOk_Click_1);
+            // 
             // AddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(623, 570);
+            this.Controls.Add(this.tbnOk);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -224,5 +241,6 @@
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2Button tbnOk;
     }
 }
