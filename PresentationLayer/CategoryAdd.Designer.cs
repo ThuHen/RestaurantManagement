@@ -57,6 +57,7 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // panel1
             // 
@@ -68,7 +69,9 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_medium_priority_100;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // label2
             // 

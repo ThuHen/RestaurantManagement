@@ -37,7 +37,7 @@
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(169, 38);
+            this.label1.Size = new System.Drawing.Size(145, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Table details";
             // 
@@ -70,7 +70,9 @@
             // 
             // picsample
             // 
+            this.picsample.Image = global::PresentationLayer.Properties.Resources.icons8_table_100;
             this.picsample.ImageFlip = Guna.UI2.WinForms.Enums.FlipOrientation.Normal;
+            this.picsample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             // 
             // txtNameadd
             // 
@@ -97,13 +99,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 245);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 28);
+            this.label2.Size = new System.Drawing.Size(56, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
             // TableAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 500);
             this.Controls.Add(this.txtNameadd);

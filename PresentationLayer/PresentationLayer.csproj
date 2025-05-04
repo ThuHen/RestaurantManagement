@@ -49,6 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillList.Designer.cs">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Checkout.Designer.cs">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KitchenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitchenView.Designer.cs">
+      <DependentUpon>KitchenView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +171,15 @@
     <Compile Include="WaiterSelect.Designer.cs">
       <DependentUpon>WaiterSelect.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillList.resx">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Checkout.resx">
+      <DependentUpon>Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitchenView.resx">
+      <DependentUpon>KitchenView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pos.resx">
       <DependentUpon>Pos.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +266,32 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\icons8-power-off-button-100.png" />
+    <None Include="resources\icons8-cutlery-100.png" />
+    <None Include="resources\icons8-new-ticket-100.png" />
+    <None Include="resources\icons8-hand-100.png" />
+    <None Include="resources\icons8-delivery-100.png" />
+    <None Include="resources\icons8-take-away-food-100.png" />
+    <None Include="resources\icons8-restaurant-table-100.png" />
+    <None Include="resources\icons8-bill-100.png" />
+    <None Include="resources\icons8-agreement-100.png" />
+    <None Include="resources\icons8-medium-priority-100.png" />
+    <None Include="resources\icons8-add-new-100.png" />
+    <None Include="resources\icons8-search-100.png" />
+    <None Include="resources\icons8-product-100.png" />
+    <None Include="resources\icons8-product-256.png" />
+    <None Include="resources\icons8-name-tag-100.png" />
+    <None Include="resources\icons8-dog-house-100.png" />
+    <None Include="resources\icons8-table-100.png" />
+    <None Include="resources\icons8-pos-terminal-100.png" />
+    <None Include="resources\icons8-chef-hat-100-pink.png" />
+    <None Include="resources\icons8-setting-100.png" />
+    <None Include="resources\icons8-group-100.png" />
+    <None Include="resources\icons8-waiter-100.png" />
+    <None Include="resources\icons8-chef-hat-100.png" />
+    <None Include="resources\icons8-delete-100.png" />
+    <None Include="resources\icons8-edit-100.png" />
+    <None Include="resources\icons8-agreement-1001.png" />
     <Content Include="resources\Screenshot 2025-03-25 162806.png" />
     <Content Include="resources\user.png" />
     <Content Include="resources\user1.png" />
