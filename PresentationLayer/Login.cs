@@ -27,28 +27,27 @@ namespace PresentationLayer
         {
             Application.Exit();
         }
-        private bool ValidateLogin(Account account)
+        private Account ValidateLogin(Account account)
         {
             try
             {
-                return loginBL.Login(account);
+                return loginBL.Login(account);               
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
-                return false;
+                throw ex;
             }
-
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
             Account account = new Account(username, password);
-            if (ValidateLogin(account))
+            Account currentUser = ValidateLogin(account);
+            if (currentUser != null)
             {
                 this.Hide();
-                Main frm = new Main(account);
+                Main frm = new Main(currentUser);
                 frm.Show();
             }
             else

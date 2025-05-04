@@ -65,10 +65,20 @@ namespace PresentationLayer
             List<Product> products = productBL.GetProducts();
             foreach (Product p in products)
             {
-                Byte[] imageArray = (byte[])p.Image;
-                byte[] imageByteArray = imageArray;
+                Image productImage;
+
+                if (p.Image != null && p.Image is byte[] imageArray)
+                {
+                    productImage = Image.FromStream(new MemoryStream(imageArray));
+                }
+                else
+                {
+                    // Dùng ảnh mặc định nếu không có ảnh
+                    productImage = Properties.Resources.food;
+                }
+
                 AddItems("0", p.Id.ToString(), p.Name, p.CategoryName.ToString(),
-                    p.Price.ToString(), Image.FromStream(new MemoryStream(imageArray)));
+                         p.Price.ToString(), productImage);
             }
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -208,7 +218,7 @@ namespace PresentationLayer
 
             if (ws.WaiterName != "")
             {
-                lblWaiter.Text = "Waiter: " + ws.WaiterName;
+                lblWaiter.Text = ws.WaiterName;
                 lblWaiter.Visible = true;
             }
             
@@ -316,7 +326,7 @@ namespace PresentationLayer
             else if (OrderType   == "Din In")
             {
                 btnDinIn.Checked = true;
-                lblWaiter.Text = "Waiter: " + (order?.WaiterName ?? "Không có tên");
+                lblWaiter.Text = order.WaiterName;
                 lblTable.Text = order.TableName;
                 lblWaiter.Visible = true;
                 lblTable.Visible = true;

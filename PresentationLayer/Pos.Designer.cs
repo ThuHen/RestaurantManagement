@@ -315,9 +315,9 @@
             this.guna2Panel2.Controls.Add(this.label1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 591);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 608);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1263, 100);
+            this.guna2Panel2.Size = new System.Drawing.Size(1263, 83);
             this.guna2Panel2.TabIndex = 1;
             // 
             // btnCheckOut
@@ -334,9 +334,9 @@
             this.btnCheckOut.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(126)))));
             this.btnCheckOut.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCheckOut.ForeColor = System.Drawing.Color.White;
-            this.btnCheckOut.Location = new System.Drawing.Point(844, 11);
+            this.btnCheckOut.Location = new System.Drawing.Point(863, 13);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(153, 77);
+            this.btnCheckOut.Size = new System.Drawing.Size(134, 58);
             this.btnCheckOut.TabIndex = 13;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
@@ -372,7 +372,7 @@
             this.CategoryPanel.Controls.Add(this.guna2Button);
             this.CategoryPanel.Location = new System.Drawing.Point(12, 162);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(169, 423);
+            this.CategoryPanel.Size = new System.Drawing.Size(169, 440);
             this.CategoryPanel.TabIndex = 2;
             // 
             // guna2Button
@@ -395,9 +395,10 @@
             this.ProductPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProductPanel.AutoScroll = true;
             this.ProductPanel.Location = new System.Drawing.Point(187, 162);
             this.ProductPanel.Name = "ProductPanel";
-            this.ProductPanel.Size = new System.Drawing.Size(632, 423);
+            this.ProductPanel.Size = new System.Drawing.Size(632, 440);
             this.ProductPanel.TabIndex = 3;
             // 
             // guna2DataGridView1
@@ -448,7 +449,7 @@
             this.guna2DataGridView1.RowHeadersWidth = 62;
             this.guna2DataGridView1.RowTemplate.Height = 35;
             this.guna2DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(426, 423);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(426, 440);
             this.guna2DataGridView1.TabIndex = 8;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;

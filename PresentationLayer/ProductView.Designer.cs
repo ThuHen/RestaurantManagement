@@ -55,7 +55,7 @@
             // 
             // label2
             // 
-            this.label2.Size = new System.Drawing.Size(107, 25);
+            this.label2.Size = new System.Drawing.Size(133, 32);
             this.label2.Text = "Product list";
             // 
             // guna2Separator1
@@ -102,7 +102,7 @@
             this.guna2DataGridView2.RowHeadersWidth = 62;
             this.guna2DataGridView2.RowTemplate.Height = 35;
             this.guna2DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.guna2DataGridView2.Size = new System.Drawing.Size(1084, 379);
+            this.guna2DataGridView2.Size = new System.Drawing.Size(1084, 479);
             this.guna2DataGridView2.TabIndex = 8;
             this.guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView2.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -129,7 +129,7 @@
             // 
             // ProductView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.guna2DataGridView2);

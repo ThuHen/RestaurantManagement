@@ -292,6 +292,7 @@
     <None Include="resources\icons8-delete-100.png" />
     <None Include="resources\icons8-edit-100.png" />
     <None Include="resources\icons8-agreement-1001.png" />
+    <None Include="resources\food.jpg" />
     <Content Include="resources\Screenshot 2025-03-25 162806.png" />
     <Content Include="resources\user.png" />
     <Content Include="resources\user1.png" />

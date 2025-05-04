@@ -31,7 +31,38 @@ namespace PresentationLayer
             }
             return _obj;
         }
+        private void ApplyPermissions()
+        {
+            switch (_account.Role)
+            {
+                case 1:
+                    // full quyền
+                    break;
 
+                case 2:
+                    btnKitchen.Visible = false;
+                    btnStaff.Visible = false;
+                    btnCategories.Visible = false;
+                    btnProducts.Visible = false;
+                    btnTable.Visible = false;
+                    btnSettings.Visible = false;
+                    break;
+
+                case 3:
+                    btnPOS.Visible = false;
+                    btnStaff.Visible = false;
+                    btnCategories.Visible = false;
+                    btnProducts.Visible = false;
+                    btnTable.Visible = false;
+                    btnSettings.Visible = false;
+                    break;
+
+                default:
+                    MessageBox.Show("Không có quyền truy cập!");
+                    this.Close();
+                    break;
+            }
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -39,6 +70,7 @@ namespace PresentationLayer
 
         private void Main_Load(object sender, EventArgs e)
         {
+            ApplyPermissions();
             lbUser.Text = $"Welcome, {_account.Username}!";
             _obj = this;
 

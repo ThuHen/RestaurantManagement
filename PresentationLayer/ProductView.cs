@@ -32,6 +32,7 @@ namespace PresentationLayer
             guna2DataGridView2.Columns["Price"].Width = 200;
             guna2DataGridView2.Columns["CategoryId"].Visible = false;
             guna2DataGridView2.Columns["Image"].Visible = false;
+            guna2DataGridView2.Columns["Id"].Visible = false;
         }
         public void AddColumns()
         {
@@ -120,11 +121,29 @@ namespace PresentationLayer
             guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
             if (guna2MessageDialog1.Show("Are you sure you want to delete?") == DialogResult.Yes)
             {
-                productBL.Del(id);
-                guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
-                guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-                MessageBox.Show("Delete successfully");
-                GetData();
+                try
+                {
+                    productBL.Del(id);
+                    guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+                    guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                    MessageBox.Show("Delete successfully");
+                    GetData();
+                }
+                catch (SqlException sqlEx)
+                {
+                    // Kiểm tra mã lỗi để xác định xem có phải là lỗi ràng buộc khóa ngoại (foreign key constraint)
+                    if (sqlEx.Number == 547) // Mã lỗi SQL 547 là lỗi ràng buộc khóa ngoại
+                    {
+                        // Hiển thị thông báo lỗi nếu gặp phải lỗi ràng buộc khóa ngoại
+                        MessageBox.Show("Danh mục này đang ràng buộc với các sản phẩm. Không thể xóa được.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        // Nếu là lỗi khác, hiển thị thông báo lỗi chung
+                        MessageBox.Show("Đã có lỗi xảy ra khi xóa danh mục: " + sqlEx.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
         }
         private void Edit(string id)
