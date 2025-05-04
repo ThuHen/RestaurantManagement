@@ -18,7 +18,7 @@ namespace DataLayer
         {
             string query = @"INSERT INTO tblMain 
                             VALUES (@aDate, @aTime, @TableName, @WaiterName,
-                                    @status, @orderType, @total, @received, @change);
+                                    @status, @orderType, @total, @received, @change,@driverID,@CusName,@CusPhone);
                             SELECT SCOPE_IDENTITY()";
 
             List<SqlParameter> parameters = new List<SqlParameter>
@@ -31,7 +31,10 @@ namespace DataLayer
                 new SqlParameter("@orderType", order.OrderType),
                 new SqlParameter("@total", order.Total),
                 new SqlParameter("@received", order.Received),
-                new SqlParameter("@change", order.Change)
+                new SqlParameter("@change", order.Change),
+                new SqlParameter("@driverID", order.driverID),
+                new SqlParameter("@CusName", order.CusName),
+                new SqlParameter("@CusPhone", order.CusPhone)
             };
 
             object result = MyExecuteScalar(query, CommandType.Text, parameters);

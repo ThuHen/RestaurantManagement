@@ -32,7 +32,10 @@ namespace PresentationLayer
         }
 
         public int MainId = 0;
-        public string OrderType;
+        public string OrderType = "";
+        public int driverID = 0;
+        public string customName = "";
+        public string customPhone= "";
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -176,7 +179,43 @@ namespace PresentationLayer
         private void btnHold_Click(object sender, EventArgs e)
         {
             // Placeholder for hold logic
+            Order order = new Order
+            {
+                Date = DateTime.Now.Date,
+                Time = DateTime.Now.ToShortTimeString(),
+                TableName = lblTable.Text,
+                WaiterName = lblWaiter.Text,
+                Status = "Hold",
+                OrderType = OrderType,
+                Total = 0,
+                Received = 0,
+                Change = 0,
+                Details = GetOrderDetailsFromGrid()
+            };
+
+            if (order.OrderType=="")
+            {
+                guna2MessageDialog1.Show("Please select order type");
+                return;
+            }
+
+
+            if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
+            {
+                MessageBox.Show("Can not kot!! Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newMainId = OrderBL.SaveOrder(order, MainId);
+                if (newMainId > 0)
+                {
+                    guna2MessageDialog1.Show("Saved Successfully");
+                    ClearForm();
+                }
+            }
         }
+
+        
 
         private void btnDelivery_Click(object sender, EventArgs e)
         {
@@ -185,6 +224,20 @@ namespace PresentationLayer
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Delivery";
+
+            AddCustomer frm = new AddCustomer();
+            frm.mainID = MainId;
+            frm.orderType = OrderType;
+            Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
+
+            if (frm.txtName.Text != "")
+            {
+                driverID = frm.driverID;
+                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text + " Driver: " + frm.cbDriver.Text;
+                lbDriverName.Visible = true;
+                customName = frm.txtName.Text;
+                customPhone = frm.txtPhone.Text;
+            }
         }
 
         private void btnTakeAway_Click(object sender, EventArgs e)
@@ -194,11 +247,27 @@ namespace PresentationLayer
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Take Away";
+
+            AddCustomer frm = new AddCustomer();
+            frm.mainID = MainId;
+            frm.orderType = OrderType;
+            Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
+
+            if (frm.txtName.Text!="")
+            {
+                driverID = frm.driverID;
+                lbDriverName.Text = "Customer Name: " + frm.txtName.Text + " Phone: " + frm.txtPhone.Text +" Driver: "+ frm.cbDriver.Text;
+                lbDriverName.Visible = true;
+                customName = frm.txtName.Text;
+                customPhone = frm.txtPhone.Text;
+            }
+            
         }
 
         private void btnDinIn_Click(object sender, EventArgs e)
         {
             OrderType = "Din In";
+            lbDriverName.Visible = false;
             TableSelect ts = new TableSelect();
             Main.BlurBackGround(Main.Instance(null), ts); // Lấy instance của Main và truyền vào
 

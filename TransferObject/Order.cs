@@ -18,7 +18,13 @@
             public double Total { get; set; }
             public double Received { get; set; }
             public double Change { get; set; }
-            public List<OrderDetail> Details { get; set; }
+            public int driverID { get; set; }
+            public string CusName { get; set; }
+
+            public string CusPhone { get; set; }
+
+
+        public List<OrderDetail> Details { get; set; }
 
         public Order() { }
 
