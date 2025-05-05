@@ -32,7 +32,10 @@ namespace PresentationLayer
         }
 
         public int MainId = 0;
-        public string OrderType;
+        public string OrderType = "";
+        public int DriverID = 0;
+        public string customName = "";
+        public string customPhone= "";
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -175,8 +178,65 @@ namespace PresentationLayer
 
         private void btnHold_Click(object sender, EventArgs e)
         {
+            if (DriverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType == "Delivery") || (customName == "" && OrderType == "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType == "Delivery") || (customPhone == "" && OrderType == "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
+
             // Placeholder for hold logic
+            Order order = new Order
+            {
+                Date = DateTime.Now.Date,
+                Time = DateTime.Now.ToShortTimeString(),
+                TableName = lblTable.Text,
+                WaiterName = lblWaiter.Text,
+                Status = "Hold",
+                OrderType = OrderType,
+                Total = 0,
+                Received = 0,
+                Change = 0,
+                Details = GetOrderDetailsFromGrid(),
+                DriverID = DriverID,
+                CusName = customName,
+                CusPhone= customPhone
+            };
+
+
+
+            if (order.OrderType=="")
+            {
+                guna2MessageDialog1.Show("Please select order type");
+                return;
+            }
+
+
+            if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))
+            {
+                MessageBox.Show("Can not kot!! Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newMainId = OrderBL.SaveOrder(order, MainId);
+                if (newMainId > 0)
+                {
+                    guna2MessageDialog1.Show("Saved Successfully");
+                    ClearForm();
+                }
+            }
         }
+
+        
 
         private void btnDelivery_Click(object sender, EventArgs e)
         {
@@ -185,20 +245,52 @@ namespace PresentationLayer
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Delivery";
+
+            AddCustomer frm = new AddCustomer();
+            frm.mainID = MainId;
+            frm.orderType = OrderType;
+            Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
+
+            if (frm.cusName != "")
+            {
+                DriverID = frm.driverID;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
+                lbDriverName.Visible = true;
+            }
         }
 
         private void btnTakeAway_Click(object sender, EventArgs e)
         {
+
             lblTable.Text = "";
             lblWaiter.Text = "";
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             OrderType = "Take Away";
+
+            AddCustomer frm = new AddCustomer();
+            frm.mainID = MainId;
+            frm.orderType = OrderType;
+            Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
+
+            if (frm.cusName!="")
+            {
+                DriverID = frm.driverID;
+                customName = frm.cusName;
+                customPhone = frm.cusPhone;
+                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
+                lbDriverName.Visible = true;
+         
+            }
+            
         }
 
         private void btnDinIn_Click(object sender, EventArgs e)
         {
             OrderType = "Din In";
+            lbDriverName.Visible = false;
             TableSelect ts = new TableSelect();
             Main.BlurBackGround(Main.Instance(null), ts); // Lấy instance của Main và truyền vào
 
@@ -232,6 +324,22 @@ namespace PresentationLayer
 
         private void btnKOT_Click(object sender, EventArgs e)
         {
+            if (DriverID == 0 && OrderType == "Delivery")
+            {
+                guna2MessageDialog1.Show("Please select driver");
+                return;
+            }
+            if ((customName == "" && OrderType == "Delivery") || (customName == "" && OrderType == "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer");
+                return;
+            }
+            if ((customPhone == "" && OrderType == "Delivery") || (customPhone == "" && OrderType == "Take Away"))
+            {
+                guna2MessageDialog1.Show("Please select customer phone");
+                return;
+            }
+
             Order order = new Order
             {
                 Date = DateTime.Now.Date,
@@ -243,7 +351,10 @@ namespace PresentationLayer
                 Total = 0,
                 Received = 0,
                 Change = 0,
-                Details = GetOrderDetailsFromGrid()
+                Details = GetOrderDetailsFromGrid(),
+                DriverID = DriverID,
+                CusName = customName,
+                CusPhone = customPhone
             };
 
             if (order.Details.Count == 0 || order.OrderType == "" || (order.OrderType == "Din In" && (order.TableName == "" || order.WaiterName == "")))

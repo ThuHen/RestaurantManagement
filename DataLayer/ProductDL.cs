@@ -14,7 +14,7 @@ namespace DataLayer
     {
         public Product GetProduct(int id)
         {
-            string sql = "SELECT * FROM products WHERE pID = @id";
+            string sql = "SELECT * FROM products WHERE ID = @id";
             List<SqlParameter> parameters = new List<SqlParameter>
     {
         new SqlParameter("@id", id)
@@ -28,13 +28,13 @@ namespace DataLayer
                 SqlDataReader reader = MyExecuteReader(sql, CommandType.Text, parameters); // ✅ truyền parameters
                 if (reader.Read())
                 {
-                    int pID = Convert.ToInt32(reader["pID"]);
-                    string name = reader["pName"].ToString();
-                    double price = Convert.ToDouble(reader["pPrice"]);
+                    int Id = Convert.ToInt32(reader["Id"]);
+                    string name = reader["Name"].ToString();
+                    double price = Convert.ToDouble(reader["Price"]);
                     int categoryID = Convert.ToInt32(reader["CategoryID"]);
-                    byte[] image = reader["pImage"] is DBNull ? null : (byte[])reader["pImage"];
+                    byte[] image = reader["Image"] is DBNull ? null : (byte[])reader["Image"];
 
-                    product = new Product(pID, name, price, categoryID, image);
+                    product = new Product(Id, name, price, categoryID, image);
                 }
                 reader.Close();
             }
@@ -52,7 +52,7 @@ namespace DataLayer
 
         public List<Product> GetProducts()
         {
-            string sql = "SELECT pID, pName, pPrice, CategoryID, c.catName, p.pImage FROM products p INNER JOIN category c ON c.catID = p.CategoryID";
+            string sql = "SELECT Id, Name, Price, CategoryID, c.catName, p.Image FROM products p INNER JOIN category c ON c.catID = p.CategoryID";
             string id, name, price, categoryId;
             byte[] image = null; // Initialize image variable
             List<Product> products = new List<Product>();
@@ -91,7 +91,7 @@ namespace DataLayer
         }
         public int Add(Product product)
         {
-            string sql = "INSERT INTO products (pName, pPrice, CategoryID, pImage) VALUES (@Name, @price, @cat, @img)";
+            string sql = "INSERT INTO products (Name, Price, CategoryID, Image) VALUES (@Name, @price, @cat, @img)";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@Name", product.Name),
@@ -115,7 +115,7 @@ namespace DataLayer
         }
         public void Del(string id)
         {
-            string sql = "DELETE FROM products WHERE pID = @id";
+            string sql = "DELETE FROM products WHERE Id = @id";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@id", id)
@@ -136,7 +136,7 @@ namespace DataLayer
         }
         public void Edit(Product product)
         {
-            string sql = "UPDATE products SET pName = @name, pPrice = @price, CategoryID = @cat, pImage = @img WHERE pID = @id";
+            string sql = "UPDATE products SET Name = @name, Price = @price, CategoryID = @cat, Image = @img WHERE Id = @id";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@name", product.Name),

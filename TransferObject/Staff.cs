@@ -43,6 +43,13 @@ namespace TransferObject
             RoleId = roleId;
 
         }
+
+        public Staff(int id, string name)
+        {
+
+            ID = id;
+            Name = name;
+        }
     }
   
 }

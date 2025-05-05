@@ -56,6 +56,10 @@ namespace BussinessLayer
         {
             return orderDL.UpdatePayment(mainId, total, received, change);
         }
+        public List<FullBillDetail> GetFullBillDetails(int mainId)
+        {
+            return orderDL.GetFullBillDetails(mainId);
+        }
         public static int SaveOrder(Order order, int existingMainId)
         {
             OrderDL orderDL = new OrderDL();

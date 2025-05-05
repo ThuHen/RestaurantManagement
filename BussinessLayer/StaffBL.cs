@@ -38,6 +38,11 @@ namespace BussinessLayer
                 throw ex;
             }
         }
+
+        public List<Staff> GetStaffCustomer()
+        {
+            return staffDL.GetStaffCustomer();
+        }
         public int Add(Staff staff)
         {
             try

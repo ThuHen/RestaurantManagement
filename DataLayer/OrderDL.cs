@@ -17,21 +17,24 @@ namespace DataLayer
         public int InsertOrder(Order order)
         {
             string query = @"INSERT INTO tblMain 
-                            VALUES (@aDate, @aTime, @TableName, @WaiterName,
-                                    @status, @orderType, @total, @received, @change);
+                            VALUES (@Date, @Time, @TableName, @WaiterName,
+                                    @Status, @OrderType, @Total, @Received, @Change, @DriverID, @CusName, @CusPhone);
                             SELECT SCOPE_IDENTITY()";
 
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                new SqlParameter("@aDate", order.Date),
-                new SqlParameter("@aTime", order.Time),
+                new SqlParameter("@Date", order.Date),
+                new SqlParameter("@Time", order.Time),
                 new SqlParameter("@TableName", order.TableName),
                 new SqlParameter("@WaiterName", order.WaiterName),
-                new SqlParameter("@status", order.Status),
-                new SqlParameter("@orderType", order.OrderType),
-                new SqlParameter("@total", order.Total),
-                new SqlParameter("@received", order.Received),
-                new SqlParameter("@change", order.Change)
+                new SqlParameter("@Status", order.Status),
+                new SqlParameter("@OrderType", order.OrderType),
+                new SqlParameter("@Total", order.Total),
+                new SqlParameter("@Received", order.Received),
+                new SqlParameter("@Change", order.Change),
+                new SqlParameter("@DriverID", order.DriverID),
+                new SqlParameter("@CusName", order.CusName),
+                new SqlParameter("@CusPhone", order.CusPhone)
             };
 
             object result = MyExecuteScalar(query, CommandType.Text, parameters);
@@ -48,18 +51,24 @@ namespace DataLayer
         public void UpdateOrder(Order order, int mainId)
         {
             string query = @"UPDATE tblMain SET 
-                                status = @status, 
-                                total = @total,
-                                received = @received, 
-                                change = @change 
+                                Status = @Status, 
+                                Total = @Total,
+                                Received = @Received, 
+                                Change = @Change 
+                                DriverID = @DriverID,                 
+                                CusName = @CusName,
+                                CusPhone = @CusPhone
                              WHERE MainID = @ID";
 
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                new SqlParameter("@status", order.Status),
-                new SqlParameter("@total", order.Total),
-                new SqlParameter("@received", order.Received),
-                new SqlParameter("@change", order.Change),
+                new SqlParameter("@Status", order.Status),
+                new SqlParameter("@Total", order.Total),
+                new SqlParameter("@Received", order.Received),
+                new SqlParameter("@Change", order.Change),
+                new SqlParameter("@DriverID", order.DriverID),
+                new SqlParameter("@CusName", order.CusName),
+                new SqlParameter("@CusPhone", order.CusPhone),
                 new SqlParameter("@ID", mainId)
             };
 
@@ -77,15 +86,15 @@ namespace DataLayer
         private void InsertOrderDetail(OrderDetail detail, int mainId)
         {
             string query = @"INSERT INTO tblDetails 
-                             VALUES (@MainID, @ProID, @qty, @price, @amount)";
+                             VALUES (@MainID, @ProID, @Qty, @Price, @Amount)";
 
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@MainID", mainId),
                 new SqlParameter("@ProID", detail.ProID),
-                new SqlParameter("@qty", detail.Qty),
-                new SqlParameter("@price", detail.Price),
-                new SqlParameter("@amount", detail.Amount)
+                new SqlParameter("@Qty", detail.Qty),
+                new SqlParameter("@Price", detail.Price),
+                new SqlParameter("@Amount", detail.Amount)
             };
 
             MyExcuteNonQuery(query, CommandType.Text, parameters);
@@ -95,17 +104,17 @@ namespace DataLayer
         {
             string query = @"UPDATE tblDetails SET 
                                 ProID = @ProID, 
-                                qty = @qty, 
-                                price = @price, 
-                                amount = @amount 
+                                Qty = @Qty, 
+                                Price = @Price, 
+                                Amount = @Amount 
                              WHERE DetailID = @ID";
 
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@ProID", detail.ProID),
-                new SqlParameter("@qty", detail.Qty),
-                new SqlParameter("@price", detail.Price),
-                new SqlParameter("@amount", detail.Amount),
+                new SqlParameter("@Qty", detail.Qty),
+                new SqlParameter("@Price", detail.Price),
+                new SqlParameter("@Amount", detail.Amount),
                 new SqlParameter("@ID", detail.DetailID)
             };
 
@@ -116,7 +125,7 @@ namespace DataLayer
         public List<Order> GetOrders()
         {
             string sql = "SELECT * FROM tblMain WHERE Status <> 'Pending'";
-            string mainID, date, time, tableName, waiterName, status, orderType, total, received, change;
+            string mainID, date, time, tableName, waiterName, Status, OrderType, Total, Received, Change, DriverID, cusName, cusPhone;
 
             List<Order> orders = new List<Order>();
 
@@ -134,13 +143,16 @@ namespace DataLayer
                         time = reader[2].ToString();
                         tableName = reader[3].ToString();
                         waiterName = reader[4].ToString();
-                        status = reader[5].ToString();
-                        orderType = reader[6].ToString();
-                        total = reader[7].ToString();
-                        received = reader[8].ToString();
-                        change = reader[9].ToString();
+                        Status = reader[5].ToString();
+                        OrderType = reader[6].ToString();
+                        Total = reader[7].ToString();
+                        Received = reader[8].ToString();
+                        Change = reader[9].ToString();
+                        DriverID = reader[10].ToString();
+                        cusName = reader[11].ToString();
+                        cusPhone = reader[12].ToString();
 
-                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, status, orderType, Double.Parse(total), Double.Parse(received), Double.Parse(change));
+                        Order order = new Order(int.Parse(mainID), DateTime.Parse(date), time, tableName, waiterName, Status, OrderType, Double.Parse(Total), Double.Parse(Received), Double.Parse(Change), int.Parse(DriverID), cusName, cusPhone);
                         //order.Details = GetOrderDetails(order.MainID);
                         orders.Add(order);
                     }
@@ -159,7 +171,7 @@ namespace DataLayer
         }
         public List<Order> GetKitchenOrders()
         {
-            string sql = "SELECT MainID, aDate, aTime, TableName, WaiterName, OrderType FROM tblMain WHERE Status <>'Complete'";
+            string sql = "SELECT MainID, Date, Time, TableName, WaiterName, OrderType FROM tblMain WHERE Status <>'Complete'";
             List<Order> orders = new List<Order>();
 
             try
@@ -170,14 +182,14 @@ namespace DataLayer
                 while (reader.Read())
                 {
                     int mainId = Convert.ToInt32(reader["MainID"]);
-                    DateTime date = Convert.ToDateTime(reader["aDate"]);
-                    string time = reader["aTime"].ToString();
+                    DateTime date = Convert.ToDateTime(reader["Date"]);
+                    string time = reader["Time"].ToString();
                     string tableName = reader["TableName"].ToString();
                     string waiterName = reader["WaiterName"].ToString();
-                    string orderType = reader["OrderType"].ToString();
+                    string OrderType = reader["OrderType"].ToString();
 
                     // Tạo đối tượng Order đầy đủ với MainID và các trường cần thiết
-                    Order order = new Order(mainId, date, time, tableName, waiterName, orderType);
+                    Order order = new Order(mainId, date, time, tableName, waiterName, OrderType);
                     //order.Details = GetOrderDetails(mainId); // nếu bạn vẫn muốn lấy chi tiết món
                     orders.Add(order);
 
@@ -194,9 +206,9 @@ namespace DataLayer
 
         public List<OrderDetail> GetOrderDetails(int mainId)
         {
-            string sql = @"SELECT d.DetailID, d.ProID, p.pName, d.qty, d.price, d.amount 
+            string sql = @"SELECT d.DetailID, d.ProID, p.Name, d.Qty, d.Price, d.Amount 
                      FROM tblDetails d 
-                     JOIN products p ON d.ProID = p.pID 
+                     JOIN products p ON d.ProID = p.Id 
                      WHERE d.MainID = @MainID";
 
             List<SqlParameter> parameters = new List<SqlParameter>
@@ -218,10 +230,10 @@ namespace DataLayer
                     {
                         DetailID = Convert.ToInt32(reader["DetailID"]),
                         ProID = Convert.ToInt32(reader["ProID"]),
-                        ProName = reader["pName"].ToString(),
-                        Qty = Convert.ToInt32(reader["qty"]),
-                        Price = Convert.ToDouble(reader["price"]),
-                        Amount = Convert.ToDouble(reader["amount"])
+                        ProName = reader["Name"].ToString(),
+                        Qty = Convert.ToInt32(reader["Qty"]),
+                        Price = Convert.ToDouble(reader["Price"]),
+                        Amount = Convert.ToDouble(reader["Amount"])
                     };
 
                     details.Add(detail);
@@ -252,14 +264,14 @@ namespace DataLayer
             MyExcuteNonQuery(sql, CommandType.Text, parameters);
         }
 
-        public bool UpdatePayment(int mainID, decimal total, decimal received, decimal change)
+        public bool UpdatePayment(int mainID, decimal Total, decimal Received, decimal Change)
         {
-            string sql = @"UPDATE tblMain SET total = @total, received = @rec, change = @change, status='Paid' WHERE MainID = @id";
+            string sql = @"UPDATE tblMain SET Total = @Total, Received = @rec, Change = @Change, Status='Paid' WHERE MainID = @id";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                new SqlParameter("@total", total),
-                new SqlParameter("@rec", received),
-                new SqlParameter("@change", change),
+                new SqlParameter("@Total", Total),
+                new SqlParameter("@rec", Received),
+                new SqlParameter("@Change", Change),
                 new SqlParameter("@id", mainID)
             };
             try
@@ -307,17 +319,18 @@ namespace DataLayer
             {
                 new SqlParameter("@MainID", mainID)
             };
+            Order order = null;
             try
             {
                 Connect();
                 SqlDataReader reader = MyExecuteReader(sql, CommandType.Text, parameters);
                 if (reader.Read())
                 {
-                    Order order = new Order
+                    order = new Order
                     {
                         MainID = Convert.ToInt32(reader["MainID"]),
-                        Date = Convert.ToDateTime(reader["aDate"]),
-                        Time = reader["aTime"].ToString(),
+                        Date = Convert.ToDateTime(reader["Date"]),
+                        Time = reader["Time"].ToString(),
                         TableName = reader["TableName"].ToString(),
                         WaiterName = reader["WaiterName"].ToString(),
                         Status = reader["Status"].ToString(),
@@ -326,9 +339,67 @@ namespace DataLayer
                         Received = Convert.ToDouble(reader["Received"]),
                         Change = Convert.ToDouble(reader["Change"])
                     };
-                    return order;
+
                 }
-                return null;
+                return order;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Disconnect();
+            }
+
+
+        }
+
+        public List<FullBillDetail> GetFullBillDetails(int mainId)
+        {
+            string qry = @"
+        SELECT * FROM tblMain m
+        JOIN tblDetails d ON d.MainID = m.MainID
+        JOIN products p ON p.Id = d.ProID
+        WHERE m.MainID = @MainID";
+
+            List<SqlParameter> parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@MainID", mainId)
+    };
+            List<FullBillDetail> details = new List<FullBillDetail>();
+            try
+            {
+                Connect();
+
+                SqlDataReader reader = MyExecuteReader(qry, CommandType.Text, parameters);
+
+                while (reader.Read())
+                {
+                    FullBillDetail detail = new FullBillDetail
+                    {
+
+                        MainID = Convert.ToInt32(reader["MainID"]),
+                        Date = Convert.ToDateTime(reader["Date"]),
+                        Time = reader["Time"].ToString(),
+                        TableName = reader["TableName"].ToString(),
+                        WaiterName = reader["WaiterName"].ToString(),
+                        CusName = reader["CusName"].ToString(),
+                        OrderType = reader["OrderType"].ToString(),
+                        Name = reader["Name"].ToString(),
+                        Qty = Convert.ToInt32(reader["Qty"]),
+                        Price = Convert.ToDouble(reader["Price"]),
+                        Amount = Convert.ToDouble(reader["Amount"]),
+                        Received = Convert.ToDouble(reader["Received"]),
+                        Change = Convert.ToDouble(reader["Change"])
+
+                    };
+
+                    details.Add(detail);
+                }
+
+                reader.Close();
+                return details;
             }
             catch (SqlException ex)
             {
@@ -339,5 +410,6 @@ namespace DataLayer
                 Disconnect();
             }
         }
+
     }
 }

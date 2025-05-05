@@ -1,5 +1,6 @@
 ﻿using BussinessLayer;
 using Guna.UI2.WinForms;
+using PresentationLayer.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,16 @@ namespace PresentationLayer
             editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvOrders.Columns.Add(editCol);
             editCol.Width = 20;
+
+            // in bill
+
+            DataGridViewImageColumn printCol = new DataGridViewImageColumn();
+            printCol.Name = "printcol";
+            printCol.HeaderText = "";
+            printCol.Image = Properties.Resources.icons8_edit_100;
+            printCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvOrders.Columns.Add(printCol);
+            printCol.Width = 20;
         }
 
         private void GetData()
@@ -57,13 +68,29 @@ namespace PresentationLayer
                     dgvOrders.Columns["aDate"].Visible = false;
 
                 if (dgvOrders.Columns["aTime"] != null)
-                    dgvOrders.Columns["aTime"].Visible = false;
+                    dgvOrders.Columns["aTime"].Visible = true;
 
                 if (dgvOrders.Columns["received"] != null)
                     dgvOrders.Columns["received"].Visible = false;
 
                 if (dgvOrders.Columns["change"] != null)
                     dgvOrders.Columns["change"].Visible = false;
+                if (dgvOrders.Columns["driverID"] != null)
+                    dgvOrders.Columns["driverID"].Visible = true;
+                if (dgvOrders.Columns["cusName"] != null)
+                    dgvOrders.Columns["cusName"].Visible = true;
+                if (dgvOrders.Columns["cusPhone"] != null)
+                    dgvOrders.Columns["cusPhone"].Visible = true;
+
+                if (dgvOrders.Columns["driverID"] != null)
+                    dgvOrders.Columns["driverID"].Visible = true;
+
+                if (dgvOrders.Columns["cusName"] != null)
+                    dgvOrders.Columns["cusName"].Visible = true;
+
+                if (dgvOrders.Columns["cusPhone"] != null)
+                    dgvOrders.Columns["cusPhone"].Visible = true;
+
 
             }
             catch (Exception ex)
@@ -89,7 +116,27 @@ namespace PresentationLayer
                 //MessageBox.Show("Edit");
 
             }
-            
+
+            int printColumnIndex = dgvOrders.Columns["printcol"].Index;
+            if (col == printColumnIndex)
+            {
+
+                Print frm = new Print();
+                reportBill cr = new reportBill();
+
+                mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
+                ///
+                List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID); // Gọi hàm rút gọn cho kitchen
+                cr.SetDatabaseLogon("sa", "lethithuhenai");
+                cr.SetDataSource(bill);
+                frm.crystalReportViewer2.ReportSource = cr;
+                frm.crystalReportViewer2.Refresh();
+                frm.Show();
+
+            }
+
+
+
         }
         
         private void Edit(string id)

@@ -81,8 +81,42 @@ namespace DataLayer
             }
             return staffs;
 
-
         }
+        public List<Staff> GetStaffCustomer()
+        {
+            string sql = "SELECT sID 'id' , sName 'name' from staff where sRole='5'";
+            List<Staff> staffs = new List<Staff>();
+
+            try
+            {
+                Connect();
+                SqlDataReader reader = MyExecuteReader(sql, CommandType.Text);
+          
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["id"]);
+                    string name = reader["name"].ToString();
+
+                    // Tạo đối tượng Order đầy đủ với MainID và các trường cần thiết
+                    Staff staff = new Staff(id,name);
+                    //order.Details = GetOrderDetails(mainId); // nếu bạn vẫn muốn lấy chi tiết món
+                    staffs.Add(staff);
+
+                }
+
+                reader.Close();
+                return staffs;
+            }
+            finally
+            {
+                Disconnect();
+            }
+        }
+
+
+
+
+
         public int Add(Staff Staff)
         {
 
