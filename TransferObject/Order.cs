@@ -18,7 +18,7 @@ using System.Threading.Tasks;
             public double Total { get; set; }
             public double Received { get; set; }
             public double Change { get; set; }
-            public int driverID { get; set; }
+            public int DriverID { get; set; }
             public string CusName { get; set; }
 
             public string CusPhone { get; set; }
@@ -85,7 +85,7 @@ using System.Threading.Tasks;
             Total = total;
             Received = received;
             Change = change;
-            driverID = driverId;
+            DriverID = driverId;
             CusName = cusName;
             CusPhone = cusPhone;
         }

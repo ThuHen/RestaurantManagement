@@ -45,7 +45,7 @@ namespace PresentationLayer
                     btnCategories.Visible = false;
                     btnProducts.Visible = false;
                     btnTable.Visible = false;
-                    btnSettings.Visible = false;
+                    btnReports.Visible = false;
                     break;
 
                 case 3:
@@ -54,7 +54,7 @@ namespace PresentationLayer
                     btnCategories.Visible = false;
                     btnProducts.Visible = false;
                     btnTable.Visible = false;
-                    btnSettings.Visible = false;
+                    btnReports.Visible = false;
                     break;
 
                 default:
@@ -166,6 +166,11 @@ namespace PresentationLayer
         private void btnKitchen_Click(object sender, EventArgs e)
         {
             AddControls(new KitchenView());
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            AddControls(new ReportsView());
         }
     }
 }

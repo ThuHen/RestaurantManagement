@@ -40,14 +40,13 @@ namespace PresentationLayer
 
             // in bill
 
-            //DataGridViewImageColumn printCol = new DataGridViewImageColumn();
-            //printCol.Name = "printcol";
-            //printCol.HeaderText = "";
-            //// sửa hình
-            //printCol.Image = Properties.Resources.icons8_edit_100;
-            //printCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            //dgvOrders.Columns.Add(printCol);
-            //printCol.Width = 20;
+            DataGridViewImageColumn printCol = new DataGridViewImageColumn();
+            printCol.Name = "printcol";
+            printCol.HeaderText = "";
+            printCol.Image = Properties.Resources.icons8_edit_100;
+            printCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvOrders.Columns.Add(printCol);
+            printCol.Width = 20;
         }
 
         private void GetData()
@@ -118,23 +117,23 @@ namespace PresentationLayer
 
             }
 
-            //int printColumnIndex = dgvOrders.Columns["printcol"].Index;
-            //if (col == printColumnIndex)
-            //{
+            int printColumnIndex = dgvOrders.Columns["printcol"].Index;
+            if (col == printColumnIndex)
+            {
 
-            //    Print frm = new Print();
-            //    BIll cr = new BIll();
+                Print frm = new Print();
+                reportBill cr = new reportBill();
 
-            //    mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
-            //    ///
-            //    List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID); // Gọi hàm rút gọn cho kitchen
+                mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
+                ///
+                List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID); // Gọi hàm rút gọn cho kitchen
+                cr.SetDatabaseLogon("sa", "lethithuhenai");
+                cr.SetDataSource(bill);
+                frm.crystalReportViewer2.ReportSource = cr;
+                frm.crystalReportViewer2.Refresh();
+                frm.Show();
 
-
-            //    frm.crystalReportViewer2.ReportSource = cr;
-            //    frm.crystalReportViewer2.Refresh();
-            //    frm.Show();
-
-            //}
+            }
 
 
 

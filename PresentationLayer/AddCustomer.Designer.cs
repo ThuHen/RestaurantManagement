@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picsample)).BeginInit();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+           
             this.SuspendLayout();
             // 
             // cbDriver
@@ -235,7 +235,7 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+           
             this.ResumeLayout(false);
 
         }

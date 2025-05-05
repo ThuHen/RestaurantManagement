@@ -73,6 +73,12 @@
     <Compile Include="Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="KitchenView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BIll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\reportBill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportBill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\reportMenu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportMenu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RestaurantManagerDataSet.Designer.cs">
@@ -209,6 +227,9 @@
     <EmbeddedResource Include="Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KitchenView.resx">
       <DependentUpon>KitchenView.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +242,14 @@
     <EmbeddedResource Include="Report\BIll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BIll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportBill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportBill.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportMenu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportMenu.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffCatAdd.resx">
       <DependentUpon>StaffCatAdd.cs</DependentUpon>

@@ -33,7 +33,7 @@ namespace PresentationLayer
 
         public int MainId = 0;
         public string OrderType = "";
-        public int driverID = 0;
+        public int DriverID = 0;
         public string customName = "";
         public string customPhone= "";
 
@@ -178,17 +178,17 @@ namespace PresentationLayer
 
         private void btnHold_Click(object sender, EventArgs e)
         {
-            if (driverID == 0 && OrderType == "Delivery")
+            if (DriverID == 0 && OrderType == "Delivery")
             {
                 guna2MessageDialog1.Show("Please select driver");
                 return;
             }
-            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            if ((customName == "" && OrderType == "Delivery") || (customName == "" && OrderType == "Take Away"))
             {
                 guna2MessageDialog1.Show("Please select customer");
                 return;
             }
-            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            if ((customPhone == "" && OrderType == "Delivery") || (customPhone == "" && OrderType == "Take Away"))
             {
                 guna2MessageDialog1.Show("Please select customer phone");
                 return;
@@ -207,7 +207,7 @@ namespace PresentationLayer
                 Received = 0,
                 Change = 0,
                 Details = GetOrderDetailsFromGrid(),
-                driverID = driverID,
+                DriverID = DriverID,
                 CusName = customName,
                 CusPhone= customPhone
             };
@@ -253,7 +253,7 @@ namespace PresentationLayer
 
             if (frm.cusName != "")
             {
-                driverID = frm.driverID;
+                DriverID = frm.driverID;
                 customName = frm.cusName;
                 customPhone = frm.cusPhone;
                 lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
@@ -277,7 +277,7 @@ namespace PresentationLayer
 
             if (frm.cusName!="")
             {
-                driverID = frm.driverID;
+                DriverID = frm.driverID;
                 customName = frm.cusName;
                 customPhone = frm.cusPhone;
                 lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
@@ -324,17 +324,17 @@ namespace PresentationLayer
 
         private void btnKOT_Click(object sender, EventArgs e)
         {
-            if (driverID == 0 && OrderType == "Delivery")
+            if (DriverID == 0 && OrderType == "Delivery")
             {
                 guna2MessageDialog1.Show("Please select driver");
                 return;
             }
-            if ((customName == "" && OrderType != "Delivery") || (customName == "" && OrderType != "Take Away"))
+            if ((customName == "" && OrderType == "Delivery") || (customName == "" && OrderType == "Take Away"))
             {
                 guna2MessageDialog1.Show("Please select customer");
                 return;
             }
-            if ((customPhone == "" && OrderType != "Delivery") || (customPhone == "" && OrderType != "Take Away"))
+            if ((customPhone == "" && OrderType == "Delivery") || (customPhone == "" && OrderType == "Take Away"))
             {
                 guna2MessageDialog1.Show("Please select customer phone");
                 return;
@@ -352,7 +352,7 @@ namespace PresentationLayer
                 Received = 0,
                 Change = 0,
                 Details = GetOrderDetailsFromGrid(),
-                driverID = driverID,
+                DriverID = DriverID,
                 CusName = customName,
                 CusPhone = customPhone
             };
