@@ -16,10 +16,12 @@ namespace PresentationLayer
     public partial class ReportsView : Form
     {
         private ProductBL productBL;
+        private StaffBL staffBL;
         public ReportsView()
         {
             InitializeComponent();
             productBL = new ProductBL();
+            staffBL = new StaffBL();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -31,6 +33,20 @@ namespace PresentationLayer
 
             //cr.SetDatabaseLogon("sa", "lethithuhenai");
             cr.SetDataSource(products);
+            frm.crystalReportViewer2.ReportSource = cr;
+            frm.crystalReportViewer2.Refresh();
+            frm.Show();
+        }
+
+        private void staffBtn_Click(object sender, EventArgs e)
+        {
+            Print frm = new Print();
+            reportStaff cr = new reportStaff();
+
+            List<Staff> staffs = staffBL.GetStaffs();
+
+            //cr.SetDatabaseLogon("sa", "lethithuhenai");
+            cr.SetDataSource(staffs);
             frm.crystalReportViewer2.ReportSource = cr;
             frm.crystalReportViewer2.Refresh();
             frm.Show();

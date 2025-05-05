@@ -14,7 +14,7 @@ namespace DataLayer
         private SqlConnection conn;
         private SqlCommand cmd;
         public DataProvider() {
-            String connString = "Data Source=.;Initial Catalog=RestaurantManager;Integrated Security=True;";
+            String connString = "Data Source=LAPTOP-8TFSIJ5P\\SQL;Initial Catalog=RestaurantManager;Integrated Security=True;";
             conn = new SqlConnection(connString);
         }
         public SqlConnection GetConnection()
