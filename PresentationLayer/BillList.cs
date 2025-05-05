@@ -7,15 +7,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using TransferObject;
 
 namespace PresentationLayer
 {
-    public partial class BillList: SampleAdd
+    public partial class BillList : SampleAdd
     {
         private OrderBL orderBL;
         public BillList()
@@ -43,7 +45,7 @@ namespace PresentationLayer
             DataGridViewImageColumn printCol = new DataGridViewImageColumn();
             printCol.Name = "printcol";
             printCol.HeaderText = "";
-            printCol.Image = Properties.Resources.icons8_edit_100;
+            printCol.Image = Properties.Resources.icons8_print_100;
             printCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvOrders.Columns.Add(printCol);
             printCol.Width = 20;
@@ -111,7 +113,7 @@ namespace PresentationLayer
             int editColumnIndex = dgvOrders.Columns["editcol"].Index;
             if (col == editColumnIndex)
             {
-             
+
                 Edit(id);
                 //MessageBox.Show("Edit");
 
@@ -120,25 +122,51 @@ namespace PresentationLayer
             int printColumnIndex = dgvOrders.Columns["printcol"].Index;
             if (col == printColumnIndex)
             {
-
                 Print frm = new Print();
-                reportBill cr = new reportBill();
+                
 
                 mainID = Convert.ToInt32(dgvOrders.CurrentRow.Cells["MainID"].Value);
-                ///
-                List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID); // Gọi hàm rút gọn cho kitchen
-                cr.SetDatabaseLogon("sa", "lethithuhenai");
-                cr.SetDataSource(bill);
-                frm.crystalReportViewer2.ReportSource = cr;
-                frm.crystalReportViewer2.Refresh();
-                frm.Show();
 
+                List<FullBillDetail> bill = orderBL.GetFullBillDetails(mainID);
+
+                DataTable dt = new DataTable("BillReportTableName");
+
+                dt.Columns.Add("Date", typeof(DateTime));
+                dt.Columns.Add("Time", typeof(string));
+               
+                dt.Columns.Add("OrderType", typeof(string));
+                dt.Columns.Add("CusName", typeof(string));
+                dt.Columns.Add("Name", typeof(string));
+                dt.Columns.Add("TableName", typeof(string));
+                dt.Columns.Add("Received", typeof(double));
+                dt.Columns.Add("Change", typeof(double));
+                
+              
+
+               
+                dt.Columns.Add("Qty", typeof(int));
+                dt.Columns.Add("Amount", typeof(double));
+                dt.Columns.Add("Price", typeof(double));
+                dt.Columns.Add("WaiterName", typeof(string));
+
+                foreach (var item in bill)
+                {
+                   dt.Rows.Add(item.Date, item.Time, item.OrderType,item.CusName, item.Name, item.TableName,
+                        item.Received, item.Change, item.Qty, item.Amount, item.Price, item.WaiterName);
+                }
+                
+                // Gắn DataSet vào ReportSource
+
+                reportBill rpt = new reportBill();
+                rpt.SetDataSource(dt);
+                frm.crystalReportViewer2.ReportSource = rpt;
+                frm.Show();
             }
 
 
 
         }
-        
+
         private void Edit(string id)
         {
             // Lấy giá trị tên hiện tại từ dòng đang chọn

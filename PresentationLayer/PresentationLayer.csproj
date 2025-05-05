@@ -97,11 +97,13 @@
     <Compile Include="Print.Designer.cs">
       <DependentUpon>Print.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\BIll.cs">
+    <Compile Include="Report\DataSetBill.cs">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DataSetBill.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BIll.rpt</DependentUpon>
-      <SubType>Component</SubType>
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
     </Compile>
     <Compile Include="Report\reportBill.cs">
       <AutoGen>True</AutoGen>
@@ -114,11 +116,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>reportMenu.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RestaurantManagerDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestaurantManagerDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="StaffCatAdd.cs">
       <SubType>Form</SubType>
@@ -239,10 +236,6 @@
     <EmbeddedResource Include="Print.resx">
       <DependentUpon>Print.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\BIll.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>BIll.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\reportBill.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportBill.cs</LastGenOutput>
@@ -319,17 +312,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="RestaurantManagerDataSet.xsc">
-      <DependentUpon>RestaurantManagerDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="RestaurantManagerDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RestaurantManagerDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="RestaurantManagerDataSet.xss">
-      <DependentUpon>RestaurantManagerDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -345,6 +327,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Report\DataSetBill.xsc">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetBill.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBill.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSetBill.xss">
+      <DependentUpon>DataSetBill.xsd</DependentUpon>
+    </None>
     <None Include="resources\icons8-power-off-button-100.png" />
     <None Include="resources\icons8-cutlery-100.png" />
     <None Include="resources\icons8-new-ticket-100.png" />
@@ -372,6 +365,7 @@
     <None Include="resources\icons8-edit-100.png" />
     <None Include="resources\icons8-agreement-1001.png" />
     <None Include="resources\food.jpg" />
+    <None Include="resources\icons8-print-100.png" />
     <Content Include="resources\paper.png" />
     <Content Include="resources\Screenshot 2025-03-25 162806.png" />
     <Content Include="resources\user.png" />

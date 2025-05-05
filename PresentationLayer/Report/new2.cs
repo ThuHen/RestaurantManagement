@@ -16,14 +16,14 @@ namespace PresentationLayer.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class BIll : ReportClass {
+    public class new2 : ReportClass {
         
-        public BIll() {
+        public new2() {
         }
         
         public override string ResourceName {
             get {
-                return "BIll.rpt";
+                return "new2.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PresentationLayer.Report {
         
         public override string FullResourceName {
             get {
-                return "PresentationLayer.Report.BIll.rpt";
+                return "PresentationLayer.Report.new2.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace PresentationLayer.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace PresentationLayer.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace PresentationLayer.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedBIll : Component, ICachedReport {
+    public class Cachednew2 : Component, ICachedReport {
         
-        public CachedBIll() {
+        public Cachednew2() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace PresentationLayer.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            BIll rpt = new BIll();
+            new2 rpt = new new2();
             rpt.Site = this.Site;
             return rpt;
         }

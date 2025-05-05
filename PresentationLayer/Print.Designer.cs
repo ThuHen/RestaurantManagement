@@ -124,7 +124,6 @@
             this.crystalReportViewer2.AutoScroll = true;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.DisplayToolbar = false;
             this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
