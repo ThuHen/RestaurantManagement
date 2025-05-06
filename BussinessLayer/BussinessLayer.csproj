@@ -44,6 +44,7 @@
     <Compile Include="OrderBL.cs" />
     <Compile Include="StaffBL.cs" />
     <Compile Include="StaffCatBL.cs" />
+    <Compile Include="StatisticBL.cs" />
     <Compile Include="TableBL.cs" />
     <Compile Include="ProductBL.cs" />
     <Compile Include="LoginBL.cs" />

@@ -51,5 +51,12 @@ namespace PresentationLayer
             frm.crystalReportViewer2.Refresh();
             frm.Show();
         }
+
+        private void btnSaleCat_Click(object sender, EventArgs e)
+        {
+            SaleByCategory saleByCategory = new SaleByCategory();
+            saleByCategory.ShowDialog();
+
+        }
     }
 }

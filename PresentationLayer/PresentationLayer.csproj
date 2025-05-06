@@ -111,6 +111,12 @@
       <DependentUpon>reportBill.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\reportSaleByCategory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportSaleByCategory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\reportStaff.cs">
       <DependentUpon>reportStaff.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -122,6 +128,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>reportMenu.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SaleByCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleByCategory.Designer.cs">
+      <DependentUpon>SaleByCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffCatAdd.cs">
       <SubType>Form</SubType>
@@ -246,6 +258,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportBill.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\reportSaleByCategory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportSaleByCategory.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\reportStaff.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportStaff.cs</LastGenOutput>
@@ -253,6 +269,9 @@
     <EmbeddedResource Include="Report\reportMenu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportMenu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleByCategory.resx">
+      <DependentUpon>SaleByCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffCatAdd.resx">
       <DependentUpon>StaffCatAdd.cs</DependentUpon>

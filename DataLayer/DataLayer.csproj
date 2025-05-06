@@ -44,6 +44,7 @@
     <Compile Include="OrderDL.cs" />
     <Compile Include="StaffDL.cs" />
     <Compile Include="StaffCatDL.cs" />
+    <Compile Include="StatisticDL.cs" />
     <Compile Include="TableDL.cs" />
     <Compile Include="ProductDL.cs" />
     <Compile Include="DataProvider.cs" />
