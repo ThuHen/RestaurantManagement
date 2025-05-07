@@ -21,7 +21,11 @@ namespace PresentationLayer
         public event EventHandler onSelect = null;
 
         public int id { get; set; }
-        public String price { get; set; }
+        public String price
+        {
+            get { return lblPrice.Text; }
+            set { lblPrice.Text = value.ToString(); }
+        }
 
         public String category { get; set; }
 

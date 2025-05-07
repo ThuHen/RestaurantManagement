@@ -66,6 +66,7 @@
             this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+           
             // 
             // panel1
             // 
@@ -177,7 +178,6 @@
             // txtImage
             // 
             this.txtImage.FillColor = System.Drawing.Color.Black;
-            this.txtImage.Image = global::PresentationLayer.Properties.Resources.icons8_product_256;
             this.txtImage.ImageRotate = 0F;
             this.txtImage.Location = new System.Drawing.Point(575, 200);
             this.txtImage.Name = "txtImage";

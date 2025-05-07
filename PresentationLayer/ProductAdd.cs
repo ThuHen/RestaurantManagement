@@ -72,6 +72,10 @@ namespace PresentationLayer
                 filePath = ofd.FileName;
                 txtImage.Image = new Bitmap(filePath);
             }
+            Image temp = new Bitmap(txtImage.Image);
+            MemoryStream ms = new MemoryStream();
+            temp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            imageByteArray = ms.ToArray();
         }
 
         public override void btnSave_Click(object sender, EventArgs e)
@@ -145,7 +149,7 @@ namespace PresentationLayer
                 }
                 else
                 {
-                    txtImage.Image = null; // hoặc gán một ảnh mặc định nếu muốn
+                    txtImage.Image = null; 
                 }
             }
         }
@@ -154,5 +158,7 @@ namespace PresentationLayer
         {
 
         }
+
+       
     }
 }
