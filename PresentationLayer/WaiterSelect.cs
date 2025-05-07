@@ -29,7 +29,7 @@ namespace PresentationLayer
             foreach (Staff staff in staffs)
             {
                 Guna.UI2.WinForms.Guna2Button b = new Guna.UI2.WinForms.Guna2Button();
-                b.Text = staff.Name.ToString();
+                b.Text = staff.sName.ToString();
                 b.Width = 150;
                 b.Height = 50;
                 b.FillColor = Color.FromArgb(241, 85, 126);

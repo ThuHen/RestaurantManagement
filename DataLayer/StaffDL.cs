@@ -29,7 +29,7 @@ namespace DataLayer
                     int sID = Convert.ToInt32(reader["sID"]);
                     string name = reader["sName"].ToString();
                     string phone = reader["sPhone"].ToString();
-                    int roleId = Convert.ToInt32(reader["sRole"]);                  
+                    int roleId = Convert.ToInt32(reader["sRoleID"]);                  
                     staff = new Staff(sID, name, phone, roleId);
 
                 }
@@ -49,7 +49,7 @@ namespace DataLayer
 
         public List<Staff> GetStaffs()
         {
-            string sql = "SELECT s.*, t.typeName FROM staff s JOIN stafftype t ON s.sRole = t.typeID;";
+            string sql = "SELECT s.*, t.typeName FROM staff s JOIN stafftype t ON s.sRoleID = t.typeID;";
             string id, name, phone, roleId, roleName;
 
             List<Staff> staffs = new List<Staff>();
@@ -82,9 +82,10 @@ namespace DataLayer
             return staffs;
 
         }
+        //shipper
         public List<Staff> GetStaffCustomer()
         {
-            string sql = "SELECT sID 'id' , sName 'name' from staff where sRole='5'";
+            string sql = "SELECT sID 'id' , sName 'name' from staff where sRoleID = '5'";
             List<Staff> staffs = new List<Staff>();
 
             try
@@ -120,12 +121,12 @@ namespace DataLayer
         public int Add(Staff Staff)
         {
 
-            string sql = "INSERT INTO Staff(sName, sPhone, sRole) VALUES(@Name, @Phone, @RoleId)";
+            string sql = "INSERT INTO Staff(sName, sPhone, sRoleID) VALUES(@Name, @Phone, @RoleId)";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                new SqlParameter("@Name", Staff.Name),
-                new SqlParameter("@Phone", Staff.Phone),
-                new SqlParameter("@RoleId", Staff.RoleId)
+                new SqlParameter("@Name", Staff.sName),
+                new SqlParameter("@Phone", Staff.sPhone),
+                new SqlParameter("@RoleId", Staff.sRoleID)
             };
             try
             {
@@ -164,13 +165,13 @@ namespace DataLayer
         }
         public void Edit(Staff Staff)
         {
-            string sql = "UPDATE Staff SET sName = @name, sPhone = @phone, sRole = @role WHERE sID = @id";
+            string sql = "UPDATE Staff SET sName = @name, sPhone = @phone, sRoleID = @role WHERE sID = @id";
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                new SqlParameter("@name", Staff.Name),
-                new SqlParameter("@phone", Staff.Phone),
-                new SqlParameter("@role", Staff.RoleId),
-                new SqlParameter("@id", Staff.ID)
+                new SqlParameter("@name", Staff.sName),
+                new SqlParameter("@phone", Staff.sPhone),
+                new SqlParameter("@role", Staff.sRoleID),
+                new SqlParameter("@id", Staff.sID)
             };
             try
             {

@@ -4,6 +4,10 @@ namespace PresentationLayer.Report
 {
     partial class DataSetBill
     {
+        partial class StaffReportDataTable
+        {
+        }
+
         partial class billReportDataTable
         {
             // Các thuộc tính của DataTable

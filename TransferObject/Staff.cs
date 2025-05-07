@@ -8,47 +8,49 @@ namespace TransferObject
 {
     public class Staff
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public Staff(int id, string name, string phone, int roleId, string roleName)
+        public int sID { get; set; }
+        public string sName { get; set; }
+        public string sPhone { get; set; }
+        public int sRoleID { get; set; }
+        public string typeName { get; set; }
+
+
+        public Staff(int sID, string sName, string sPhone, int sRoleID, string sRoleName)
         {
-            ID = id;
-            Name = name;
-            Phone = phone;
-            RoleId = roleId;
-            RoleName = roleName;
+            this.sID = sID;
+            this.sName = sName;
+            this.sPhone = sPhone;
+            this.sRoleID = sRoleID;
+            this.typeName = sRoleName;
         }
-        public Staff(string name, string phone, int roleId, string roleName)
+        public Staff(string sName, string sPhone, int sRoleID, string sRoleName)
         {
-            Name = name;
-            Phone = phone;
-            RoleId = roleId;
-            RoleName = roleName;
+            this.sName = sName;
+            this.sPhone = sPhone;
+            this.sRoleID = sRoleID;
+            this.typeName = sRoleName;
         }
-        public Staff(int id, string name, string phone, int roleId)
+        public Staff(int sID, string sName, string sPhone, int sRoleID)
         {
-            ID = id;
-            Name = name;
-            Phone = phone;
-            RoleId = roleId;
+            this.sID = sID;
+            this.sName = sName;
+            this.sPhone = sPhone;
+            this.sRoleID = sRoleID;
           
         }
-        public Staff(string name, string phone, int roleId)
+        public Staff(string sName, string sPhone, int sRoleID)
         {
-            Name = name;
-            Phone = phone;
-            RoleId = roleId;
+            this.sName = sName;
+            this.sPhone = sPhone;
+            this.sRoleID = sRoleID;
 
         }
 
-        public Staff(int id, string name)
+        public Staff(int sID, string sName)
         {
 
-            ID = id;
-            Name = name;
+            this.sID = sID;
+            this.sName = sName;
         }
     }
   

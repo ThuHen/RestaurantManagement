@@ -16,7 +16,7 @@ namespace BussinessLayer
         {
             staffCatDL = new StaffCatDL();
         }
-        public List<Category> GetStaffCats()
+        public List<StaffType> GetStaffCats()
         {
             try
             {
@@ -28,11 +28,11 @@ namespace BussinessLayer
                 throw ex;
             }
         }
-        public int Add(Category category)
+        public int Add(StaffType StaffType)
         {
             try
             {
-                return staffCatDL.Add(category);
+                return staffCatDL.Add(StaffType);
             }
             catch (SqlException ex)
             {

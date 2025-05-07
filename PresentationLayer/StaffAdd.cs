@@ -32,8 +32,8 @@ namespace PresentationLayer
         {
             StaffCatBL catBL = new StaffCatBL();
             cbRole.DataSource = catBL.GetStaffCats();
-            cbRole.DisplayMember = "name";
-            cbRole.ValueMember = "id";
+            cbRole.DisplayMember = "typeName";
+            cbRole.ValueMember = "typeID";
             cbRole.SelectedIndex = -1;
 
             if (catID > 0)
@@ -97,8 +97,8 @@ namespace PresentationLayer
             staff = staffBL.GetStaff(id);
             if (staff != null)
             {
-                txtNameadd.Text = staff.Name;
-                txtPhone.Text = staff.Phone;
+                txtNameadd.Text = staff.sName;
+                txtPhone.Text = staff.sPhone;
             }
             else
             {

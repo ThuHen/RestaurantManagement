@@ -31,7 +31,7 @@ namespace PresentationLayer
 
             List<Product> products = productBL.GetProducts();
 
-            //cr.SetDatabaseLogon("sa", "lethithuhenai");
+            //cr.SetDatabaseLogon("sa", "");
             cr.SetDataSource(products);
             frm.crystalReportViewer2.ReportSource = cr;
             frm.crystalReportViewer2.Refresh();
@@ -45,7 +45,21 @@ namespace PresentationLayer
 
             List<Staff> staffs = staffBL.GetStaffs();
 
-            //cr.SetDatabaseLogon("sa", "lethithuhenai");
+            DataTable dt = new DataTable("BillReportTableName");
+
+            dt.Columns.Add("sName", typeof(string));
+            dt.Columns.Add("sPhone", typeof(string));
+
+            dt.Columns.Add("typeName", typeof(string));
+
+
+            foreach (var item in staffs)
+            {
+                dt.Rows.Add(item.sName, item.sPhone, item.typeName);
+
+            }
+
+            //cr.SetDatabaseLogon("sa", "");
             cr.SetDataSource(staffs);
             frm.crystalReportViewer2.ReportSource = cr;
             frm.crystalReportViewer2.Refresh();

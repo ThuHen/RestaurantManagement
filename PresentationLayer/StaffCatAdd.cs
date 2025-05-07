@@ -39,10 +39,10 @@ namespace PresentationLayer
             {
                 string name;
                 name = txtNameadd.Text;
-                Category category = new Category(name);
+                StaffType type = new StaffType(name);
                 try
                 {
-                    int numberOfRows = staffCatBL.Add(category);
+                    int numberOfRows = staffCatBL.Add(type);
                     if (numberOfRows > 0)
                     {
                         id = 0;

@@ -29,7 +29,7 @@ namespace PresentationLayer
         private void StaffView_Load(object sender, EventArgs e)
         {
             GetData();
-            
+
         }
         public void AddColumns()
         {
@@ -60,15 +60,19 @@ namespace PresentationLayer
                 {
                     if (txtSearch.Text != "")
                     {
-                        guna2DataGridView2.DataSource = staffBL.GetStaffs().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                        guna2DataGridView2.DataSource = staffBL.GetStaffs().Where(x => x.sName.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                     }
                     else
                     {
                         guna2DataGridView2.DataSource = staffBL.GetStaffs();
                     }
 
-                    guna2DataGridView2.Columns["Id"].Visible = false;
-                    guna2DataGridView2.Columns["RoleId"].Visible = false;
+                    guna2DataGridView2.Columns["sID"].Visible = false;
+                    guna2DataGridView2.Columns["sRoleID"].Visible = false;
+                    guna2DataGridView2.Columns["sName"].HeaderText = "Name";
+                    guna2DataGridView2.Columns["sPhone"].HeaderText = "Phone";
+                    guna2DataGridView2.Columns["typeName"].HeaderText = "Role";
+                    guna2DataGridView2.Columns["sName"].Width = 600;
                     AddColumns();
 
                 }
@@ -83,15 +87,16 @@ namespace PresentationLayer
                 {
                     if (txtSearch.Text != "")
                     {
-                        guna2DataGridView2.DataSource = staffCatBL.GetStaffCats().Where(x => x.Name.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+                        guna2DataGridView2.DataSource = staffCatBL.GetStaffCats().Where(x => x.typeName.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
                     }
                     else
                     {
                         guna2DataGridView2.DataSource = staffCatBL.GetStaffCats();
                     }
 
-                    guna2DataGridView2.Columns["Id"].Visible = false;
-                    guna2DataGridView2.Columns["Name"].Width = 800;
+                    guna2DataGridView2.Columns["typeID"].Visible = false;
+                    guna2DataGridView2.Columns["typeName"].Width = 1000;
+                    guna2DataGridView2.Columns["typeName"].HeaderText = "Staff Category Name";
                     AddColumns();
 
                 }
@@ -136,7 +141,7 @@ namespace PresentationLayer
             //MessageBox.Show("col: " + col + " row: " + row);
             // Đảm bảo chỉ xử lý khi click vào dòng hợp lệ
             if (row < 0) return;
-            string id = guna2DataGridView2.Rows[row].Cells["id"].Value.ToString();
+            string id = guna2DataGridView2.Rows[row].Cells["typeID"].Value.ToString();
 
             int editColumnIndex = guna2DataGridView2.Columns["editcol"].Index;
             int deleteColumnIndex = guna2DataGridView2.Columns["deletecol"].Index;
@@ -180,8 +185,8 @@ namespace PresentationLayer
         {
             DialogResult result;
             if (flag == 0)
-            {               
-                int idCatRole = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["RoleId"].Value);
+            {
+                int idCatRole = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["sRoleID"].Value);
                 int idStaff = Convert.ToInt32(id);
                 StaffAdd frm = new StaffAdd();
                 frm.id = idStaff;
@@ -190,8 +195,8 @@ namespace PresentationLayer
             }
             else
             {
-                string currentName = guna2DataGridView2.CurrentRow.Cells["Name"].Value.ToString();
-                int idCategory = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["Id"].Value);
+                string currentName = guna2DataGridView2.CurrentRow.Cells["typeName"].Value.ToString();
+                int idCategory = Convert.ToInt32(guna2DataGridView2.CurrentRow.Cells["typeID"].Value);
                 StaffCatAdd frm = new StaffCatAdd();
                 frm.id = idCategory;
                 frm.txtNameadd.Text = currentName;

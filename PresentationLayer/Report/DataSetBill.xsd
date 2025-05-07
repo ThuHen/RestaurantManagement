@@ -30,6 +30,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="StaffReport" msprop:Generator_RowEvHandlerName="StaffReportRowChangeEventHandler" msprop:Generator_RowDeletedName="StaffReportRowDeleted" msprop:Generator_RowDeletingName="StaffReportRowDeleting" msprop:Generator_RowEvArgName="StaffReportRowChangeEvent" msprop:Generator_TablePropName="StaffReport" msprop:Generator_RowChangedName="StaffReportRowChanged" msprop:Generator_RowChangingName="StaffReportRowChanging" msprop:Generator_TableClassName="StaffReportDataTable" msprop:Generator_RowClassName="StaffReportRow" msprop:Generator_TableVarName="tableStaffReport" msprop:Generator_UserTableName="StaffReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sName" msprop:Generator_ColumnPropNameInRow="sName" msprop:Generator_ColumnPropNameInTable="sNameColumn" msprop:Generator_ColumnVarNameInTable="columnsName" msprop:Generator_UserColumnName="sName" type="xs:string" minOccurs="0" />
+              <xs:element name="sPhone" msprop:Generator_ColumnPropNameInRow="sPhone" msprop:Generator_ColumnPropNameInTable="sPhoneColumn" msprop:Generator_ColumnVarNameInTable="columnsPhone" msprop:Generator_UserColumnName="sPhone" type="xs:string" minOccurs="0" />
+              <xs:element name="typeName" msprop:Generator_ColumnPropNameInRow="typeName" msprop:Generator_ColumnPropNameInTable="typeNameColumn" msprop:Generator_ColumnVarNameInTable="columntypeName" msprop:Generator_UserColumnName="typeName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

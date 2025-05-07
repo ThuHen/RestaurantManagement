@@ -13,11 +13,11 @@ namespace DataLayer
     public class StaffCatDL:DataProvider
     {
       
-        public List<Category> GetStaffCats()
+        public List<StaffType> GetStaffCats()
         {
             string sql = "SELECT * FROM stafftype";
             string id, name;
-            List<Category> categories = new List<Category>();
+            List<StaffType> categories = new List<StaffType>();
             try
             {
                 Connect();
@@ -26,8 +26,8 @@ namespace DataLayer
                 {
                     id = reader[0].ToString();
                     name = reader[1].ToString();
-                    Category category = new Category(int.Parse(id),name);
-                    categories.Add(category);
+                    StaffType StaffType = new StaffType(int.Parse(id),name);
+                    categories.Add(StaffType);
                 }
                 reader.Close();
                 
@@ -42,9 +42,9 @@ namespace DataLayer
             }
             return categories;
         }
-        public int Add(Category category)
+        public int Add(StaffType StaffType)
         {
-            string sql = "INSERT INTO stafftype(typeName) VALUES('" + category.Name +  "')";
+            string sql = "INSERT INTO stafftype(typeName) VALUES('" + StaffType.typeName +  "')";
             try
             {
                 return MyExcuteNonQuery(sql, CommandType.Text);

@@ -38,7 +38,7 @@ namespace BussinessLayer
                 throw ex;
             }
         }
-
+        //ham lay danh sach nhan vien lam shipper
         public List<Staff> GetStaffCustomer()
         {
             return staffDL.GetStaffCustomer();
@@ -80,7 +80,7 @@ namespace BussinessLayer
         public List<Staff> GetStaffByRole(String role)
         {
             List<Staff> staffList = this.GetStaffs();
-            List<Staff> rs = staffList.Where(staff => staff.RoleName == role).ToList();
+            List<Staff> rs = staffList.Where(staff => staff.typeName == role).ToList();
             return rs;
         }
     }
