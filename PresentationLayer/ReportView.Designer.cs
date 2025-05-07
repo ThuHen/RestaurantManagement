@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsView));
             this.label1 = new System.Windows.Forms.Label();
             this.btnMenu = new Guna.UI2.WinForms.Guna2Button();
+            this.staffBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSaleCat = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label1
@@ -39,7 +41,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(94, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 32);
+            this.label1.Size = new System.Drawing.Size(95, 26);
             this.label1.TabIndex = 6;
             this.label1.Text = "Reports";
             // 
@@ -47,6 +49,7 @@
             // 
             this.btnMenu.AutoRoundedCorners = true;
             this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnMenu.BorderRadius = 39;
             this.btnMenu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btnMenu.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(86)))));
             this.btnMenu.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
@@ -70,11 +73,69 @@
             this.btnMenu.TextOffset = new System.Drawing.Point(20, 0);
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
+            // staffBtn
+            // 
+            this.staffBtn.AutoRoundedCorners = true;
+            this.staffBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.staffBtn.BorderRadius = 39;
+            this.staffBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.staffBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(86)))));
+            this.staffBtn.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.staffBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.staffBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.staffBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.staffBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.staffBtn.FillColor = System.Drawing.Color.Transparent;
+            this.staffBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.staffBtn.ForeColor = System.Drawing.Color.White;
+            this.staffBtn.Image = global::PresentationLayer.Properties.Resources.icons8_agreement_100;
+            this.staffBtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.staffBtn.ImageOffset = new System.Drawing.Point(10, 0);
+            this.staffBtn.Location = new System.Drawing.Point(296, 136);
+            this.staffBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.staffBtn.Name = "staffBtn";
+            this.staffBtn.Size = new System.Drawing.Size(177, 80);
+            this.staffBtn.TabIndex = 7;
+            this.staffBtn.Text = "Staff list";
+            this.staffBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.staffBtn.TextOffset = new System.Drawing.Point(20, 0);
+            this.staffBtn.Click += new System.EventHandler(this.staffBtn_Click);
+            // 
+            // btnSaleCat
+            // 
+            this.btnSaleCat.AutoRoundedCorners = true;
+            this.btnSaleCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnSaleCat.BorderRadius = 39;
+            this.btnSaleCat.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnSaleCat.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(86)))));
+            this.btnSaleCat.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.btnSaleCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaleCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSaleCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSaleCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSaleCat.FillColor = System.Drawing.Color.Transparent;
+            this.btnSaleCat.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSaleCat.ForeColor = System.Drawing.Color.White;
+            this.btnSaleCat.Image = global::PresentationLayer.Properties.Resources.icons8_agreement_100;
+            this.btnSaleCat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSaleCat.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnSaleCat.Location = new System.Drawing.Point(496, 136);
+            this.btnSaleCat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaleCat.Name = "btnSaleCat";
+            this.btnSaleCat.Size = new System.Drawing.Size(177, 80);
+            this.btnSaleCat.TabIndex = 8;
+            this.btnSaleCat.Text = "Sale By Category";
+            this.btnSaleCat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSaleCat.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnSaleCat.Click += new System.EventHandler(this.btnSaleCat_Click);
+            // 
             // ReportsView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1171, 769);
+            this.Controls.Add(this.btnSaleCat);
+            this.Controls.Add(this.staffBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,5 +151,7 @@
 
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button btnMenu;
+        private Guna.UI2.WinForms.Guna2Button staffBtn;
+        private Guna.UI2.WinForms.Guna2Button btnSaleCat;
     }
 }
