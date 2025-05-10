@@ -35,7 +35,7 @@ namespace PresentationLayer
         public string OrderType = "";
         public int DriverID = 0;
         public string customName = "";
-        public string customPhone= "";
+        public string customPhone = "";
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -173,6 +173,7 @@ namespace PresentationLayer
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             lblTotal.Text = "0.00";
+            lbDriverName.Text = "";
             guna2DataGridView1.Rows.Clear();
         }
 
@@ -209,12 +210,12 @@ namespace PresentationLayer
                 Details = GetOrderDetailsFromGrid(),
                 DriverID = DriverID,
                 CusName = customName,
-                CusPhone= customPhone
+                CusPhone = customPhone
             };
 
 
 
-            if (order.OrderType=="")
+            if (order.OrderType == "")
             {
                 guna2MessageDialog1.Show("Please select order type");
                 return;
@@ -236,7 +237,7 @@ namespace PresentationLayer
             }
         }
 
-        
+
 
         private void btnDelivery_Click(object sender, EventArgs e)
         {
@@ -251,14 +252,13 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.cusName != "")
-            {
-                DriverID = frm.driverID;
-                customName = frm.cusName;
-                customPhone = frm.cusPhone;
-                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
-                lbDriverName.Visible = true;
-            }
+
+            DriverID = frm.driverID;
+            customName = frm.cusName;
+            customPhone = frm.cusPhone;
+            lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone + " Driver: " + frm.cbDriver.Text;
+            lbDriverName.Visible = true;
+
         }
 
         private void btnTakeAway_Click(object sender, EventArgs e)
@@ -275,16 +275,16 @@ namespace PresentationLayer
             frm.orderType = OrderType;
             Main.BlurBackGround(Main.Instance(null), frm); // Lấy instance của Main và truyền vào
 
-            if (frm.cusName!="")
-            {
-                DriverID = frm.driverID;
-                customName = frm.cusName;
-                customPhone = frm.cusPhone;
-                lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
-                lbDriverName.Visible = true;
-         
-            }
-            
+
+
+            DriverID = frm.driverID;
+            customName = frm.cusName;
+            customPhone = frm.cusPhone;
+            lbDriverName.Text = "Customer Name: " + customName + " Phone: " + customPhone;
+            lbDriverName.Visible = true;
+
+
+
         }
 
         private void btnDinIn_Click(object sender, EventArgs e)
@@ -313,7 +313,7 @@ namespace PresentationLayer
                 lblWaiter.Text = ws.WaiterName;
                 lblWaiter.Visible = true;
             }
-            
+
             else
             {
                 lblWaiter.Text = "";
@@ -427,14 +427,16 @@ namespace PresentationLayer
                 btnDelivery.Checked = true;
                 lblWaiter.Visible = false;
                 lblTable.Visible = false;
+                lbDriverName.Text = "Customer Name: " + order.CusName + " Phone: " + order.CusPhone + " Driver: " + order.DriverID;
             }
             else if (OrderType == "Take Away")
             {
                 btnTakeAway.Checked = true;
                 lblWaiter.Visible = false;
                 lblTable.Visible = false;
+                lbDriverName.Text = "Customer Name: " + order.CusName + " Phone: " + order.CusPhone;
             }
-            else if (OrderType   == "Din In")
+            else if (OrderType == "Din In")
             {
                 btnDinIn.Checked = true;
                 lblWaiter.Text = order.WaiterName;
@@ -442,6 +444,7 @@ namespace PresentationLayer
                 lblWaiter.Visible = true;
                 lblTable.Visible = true;
             }
+
 
         }
 

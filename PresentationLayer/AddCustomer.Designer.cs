@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.cbDriver = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lbDriver = new System.Windows.Forms.Label();
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
@@ -44,7 +43,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picsample)).BeginInit();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-           
             this.SuspendLayout();
             // 
             // cbDriver
@@ -110,9 +108,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(183, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 32);
+            this.label1.Size = new System.Drawing.Size(249, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Add Customer";
+            this.label1.Text = "Customer Information";
             // 
             // picsample
             // 
@@ -139,7 +137,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(554, 138);
+            this.panel1.Size = new System.Drawing.Size(623, 138);
             this.panel1.TabIndex = 1;
             // 
             // guna2ControlBox1
@@ -147,7 +145,7 @@
             this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(503, 10);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(572, 10);
             this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(40, 23);
@@ -212,7 +210,7 @@
             this.tbnOk.Name = "tbnOk";
             this.tbnOk.Size = new System.Drawing.Size(180, 45);
             this.tbnOk.TabIndex = 2;
-            this.tbnOk.Text = "guna2Button1";
+            this.tbnOk.Text = "OK";
             this.tbnOk.Click += new System.EventHandler(this.tbnOk_Click_1);
             // 
             // AddCustomer
@@ -235,7 +233,6 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-           
             this.ResumeLayout(false);
 
         }

@@ -337,8 +337,12 @@ namespace DataLayer
                         OrderType = reader["OrderType"].ToString(),
                         Total = Convert.ToDouble(reader["Total"]),
                         Received = Convert.ToDouble(reader["Received"]),
-                        Change = Convert.ToDouble(reader["Change"])
+                        Change = Convert.ToDouble(reader["Change"]),
+                        DriverID = Convert.ToInt32(reader["DriverID"]),
+                        CusName = reader["CusName"].ToString(),
+                        CusPhone = reader["CusPhone"].ToString()
                     };
+
 
                 }
                 return order;

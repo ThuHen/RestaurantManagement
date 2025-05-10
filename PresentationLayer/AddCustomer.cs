@@ -38,8 +38,8 @@ namespace PresentationLayer
            
             StaffBL staffBL = new StaffBL();
             cbDriver.DataSource = staffBL.GetStaffCustomer();
-            cbDriver.DisplayMember = "name";
-            cbDriver.ValueMember = "id";
+            cbDriver.DisplayMember = "sName";
+            cbDriver.ValueMember = "sID";
             cbDriver.SelectedIndex = -1;
 
             if (mainID > 0)
