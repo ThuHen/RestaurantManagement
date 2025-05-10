@@ -33,7 +33,7 @@ namespace PresentationLayer
         }
         private void ApplyPermissions()
         {
-            switch (_account.Role)
+            switch (_account.RoleID)
             {
                 case 1:
                     // full quyền
@@ -47,6 +47,7 @@ namespace PresentationLayer
                     btnTable.Visible = false;
                     btnReports.Visible = false;
                     btnSettings.Visible = false;
+                    btnUsers.Visible = false;
                     break;
 
                 case 3:
@@ -57,9 +58,11 @@ namespace PresentationLayer
                     btnTable.Visible = false;
                     btnReports.Visible = false;
                     btnSettings.Visible = false;
+                    btnUsers.Visible = false;
                     break;
                 case 4:
                     btnSettings.Visible = false;
+                    btnUsers.Visible = false;
                     break;
 
                 default:
@@ -184,6 +187,11 @@ namespace PresentationLayer
         private void guna2ControlBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            AddControls(new UserView());
         }
     }
 }

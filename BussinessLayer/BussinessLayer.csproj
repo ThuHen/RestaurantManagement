@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OrderBL.cs" />
+    <Compile Include="UserBL.cs" />
     <Compile Include="StaffBL.cs" />
     <Compile Include="StaffCatBL.cs" />
     <Compile Include="StatisticBL.cs" />

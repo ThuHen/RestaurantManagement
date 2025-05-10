@@ -28,7 +28,7 @@ namespace DataLayer
                 {
                     account.Username = reader["username"].ToString();
                     account.Password = reader["upass"].ToString();
-                    account.Role = Convert.ToInt32(reader["roleID"]);
+                    account.RoleID = Convert.ToInt32(reader["roleID"]);
                     return account;
                 }
                 else
