@@ -29,7 +29,7 @@ namespace PresentationLayer
             DateTime endDate = Convert.ToDateTime(dateTimePicker2.Value).Date;
             DataTable data = new StatisticBL().getSalesByCategory(startDate, endDate);
 
-            cr.SetDatabaseLogon("sa", "lethithuhenai");
+            
             cr.SetDataSource(data);
             frm.crystalReportViewer2.ReportSource = cr;
             frm.crystalReportViewer2.Refresh();

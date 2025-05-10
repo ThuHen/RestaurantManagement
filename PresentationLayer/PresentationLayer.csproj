@@ -129,6 +129,12 @@
       <DependentUpon>reportMenu.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\rpSaleByCategory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpSaleByCategory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SaleByCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,10 @@
     <EmbeddedResource Include="Report\reportMenu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reportMenu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpSaleByCategory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpSaleByCategory.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleByCategory.resx">
       <DependentUpon>SaleByCategory.cs</DependentUpon>

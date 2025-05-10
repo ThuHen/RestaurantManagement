@@ -12,18 +12,22 @@ namespace DataLayer
     {
         public DataTable getSalesByCategory(DateTime startDate, DateTime endDate)
         {
-            String query = @"SELECT 
-                            c.catID,
-                            c.catName,
-                            SUM(d.Qty) AS TotalQuantity,
-                            SUM(d.Qty * d.Price) AS TotalAmount
-                            FROM tblMain m
-                            INNER JOIN tblDetails d ON m.MainID = d.MainID
-                            INNER JOIN products p ON p.Id = d.ProID
-                            INNER JOIN Category c ON c.catID = p.CategoryID
-                            WHERE m.Date BETWEEN @startDate AND @endDate
-                            GROUP BY c.catID, c.catName
-";
+            String query = @"
+        SELECT 
+            
+            c.catName,           
+            p.Name,
+            d.Qty,
+            d.Price,
+            d.Amount,
+            m.Date
+        FROM tblMain m
+        INNER JOIN tblDetails d ON m.MainID = d.MainID
+        INNER JOIN products p ON p.Id = d.ProID
+        INNER JOIN Category c ON c.catID = p.CategoryID
+        WHERE m.Date BETWEEN @startDate AND @endDate
+    ";
+
             SqlConnection conn = GetConnection();
             conn.Open();
             SqlCommand sqlCommand = new SqlCommand(query, conn);
