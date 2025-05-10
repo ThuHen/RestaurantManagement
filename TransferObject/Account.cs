@@ -11,7 +11,7 @@ namespace TransferObject
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public int Role { get; set; } // 1 = Admin, 2 = Cashier, 3 = Kitchen
+        public int Role { get; set; } // 1 = Admin, 2 = Cashier, 3 = Kitchen, 4 = Manager
 
         public Account(string user, string pass, int role)
         {

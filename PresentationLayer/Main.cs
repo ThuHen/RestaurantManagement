@@ -46,6 +46,7 @@ namespace PresentationLayer
                     btnProducts.Visible = false;
                     btnTable.Visible = false;
                     btnReports.Visible = false;
+                    btnSettings.Visible = false;
                     break;
 
                 case 3:
@@ -55,6 +56,10 @@ namespace PresentationLayer
                     btnProducts.Visible = false;
                     btnTable.Visible = false;
                     btnReports.Visible = false;
+                    btnSettings.Visible = false;
+                    break;
+                case 4:
+                    btnSettings.Visible = false;
                     break;
 
                 default:
@@ -73,6 +78,7 @@ namespace PresentationLayer
             ApplyPermissions();
             lbUser.Text = $"Welcome, {_account.Username}!";
             _obj = this;
+            AddControls(new Home());
 
 
         }
@@ -133,13 +139,8 @@ namespace PresentationLayer
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-
+            AddControls(new Home());
         }
-
-        //private void guna2PictureBox1_Click(object sender, EventArgs e)
-        //{
-
-        //}
 
         public static void BlurBackGround(Form mainForm, Form Model)
         {
@@ -171,6 +172,18 @@ namespace PresentationLayer
         private void btnReports_Click(object sender, EventArgs e)
         {
             AddControls(new ReportsView());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void guna2ControlBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

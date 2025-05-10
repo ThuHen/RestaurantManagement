@@ -73,6 +73,12 @@
     <Compile Include="Checkout.Designer.cs">
       <DependentUpon>Checkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     <EmbeddedResource Include="Checkout.resx">
       <DependentUpon>Checkout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportView.resx">
       <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,6 +414,7 @@
     <None Include="resources\icons8-agreement-1001.png" />
     <None Include="resources\food.jpg" />
     <None Include="resources\icons8-print-100.png" />
+    <None Include="resources\home-chef.jpg" />
     <Content Include="resources\paper.png" />
     <Content Include="resources\Screenshot 2025-03-25 162806.png" />
     <Content Include="resources\user.png" />

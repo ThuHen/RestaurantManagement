@@ -36,17 +36,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(332, 132);
+            this.label1.Location = new System.Drawing.Point(231, 331);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 52);
+            this.label1.Size = new System.Drawing.Size(205, 52);
             this.label1.TabIndex = 0;
+            this.label1.Text = "Welcome";
             // 
             // label2
             // 
-            this.label2.Image = global::PresentationLayer.Properties.Resources.user;
-            this.label2.Location = new System.Drawing.Point(341, 186);
+            this.label2.Image = global::PresentationLayer.Properties.Resources.home_chef;
+            this.label2.Location = new System.Drawing.Point(139, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 156);
+            this.label2.Size = new System.Drawing.Size(363, 226);
             this.label2.TabIndex = 1;
             // 
             // Home

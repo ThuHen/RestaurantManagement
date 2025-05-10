@@ -145,6 +145,9 @@
   <data name="icons8-setting-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons8-setting-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-print-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons8-print-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-product-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons8-product-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,7 +208,7 @@
   <data name="icons8-agreement-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons8-agreement-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-print-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons8-print-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home-chef" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\home-chef.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
